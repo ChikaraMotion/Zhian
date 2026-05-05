@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List — Zhian</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f9f5;
+            color: #2d3a2d;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+            padding-bottom: 30px;
+        }
+        
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: #2d6a4f;
+            cursor: pointer;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+        
+        .back-btn:active {
+            opacity: 0.6;
+        }
+        
+        .page-title {
+            font-size: 28px;
+            color: #2d6a4f;
+            margin-bottom: 4px;
+        }
+        
+        .page-subtitle {
+            font-size: 14px;
+            color: #6b7f6b;
+            margin-bottom: 16px;
+        }
+        
+        /* Progress bar */
+        .progress-bar-wrap {
+            background: #e0ede0;
+            border-radius: 10px;
+            height: 8px;
+            margin-bottom: 6px;
+            overflow: hidden;
+        }
+        
+        .progress-bar-fill {
+            background: #2d6a4f;
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            font-size: 12px;
+            color: #6b7f6b;
+            text-align: right;
+            margin-bottom: 18px;
+        }
+        
+        /* Add parent button */
+        .add-parent-btn {
+            width: 100%;
+            padding: 14px;
+            background: #2d6a4f;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            margin-bottom: 20px;
+            transition: background 0.2s;
+        }
+        
+        .add-parent-btn:active {
+            background: #1b4332;
+        }
+        
+        /* Task list */
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        /* Task item */
+        .task-item {
+            background: white;
+            border-radius: 12px;
+            padding: 14px 14px 14px 10px;
+            box-shadow: 0 1px 4px rgba(45, 106, 79, 0.05);
+            border: 2px solid transparent;
+            transition: all 0.2s;
+            cursor: grab;
+            user-select: none;
+        }
+        
+        .task-item:active {
+            cursor: grabbing;
+        }
+        
+        .task-item.dragging {
+            opacity: 0.5;
+            border-color: #52b788;
+        }
+        
+        .task-item.drag-over {
+            border-color: #52b788;
+            border-style: dashed;
+        }
+        
+        .task-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Custom checkbox */
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #c0d6c0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            color: transparent;
+        }
+        
+        .checkbox.checked {
+            background: #2d6a4f;
+            border-color: #2d6a4f;
+            color: white;
+        }
+        
+        .checkbox.partial {
+            background: #e8f5e9;
+            border-color: #2d6a4f;
+            color: #2d6a4f;
+        }
+        
+        .task-text {
+            flex-grow: 1;
+            font-size: 15px;
+            color: #2d3a2d;
+            transition: color 0.2s;
+        }
+        
+        .task-text.done {
+            text-decoration: line-through;
+            color: #a0b8a0;
+        }
+        
+        .task-edit-input {
+            flex-grow: 1;
+            font-size: 15px;
+            padding: 4px 8px;
+            border: 2px solid #52b788;
+            border-radius: 6px;
+            font-family: inherit;
+            outline: none;
+            background: #fafff8;
+        }
+        
+        .task-actions {
+            display: flex;
+            gap: 2px;
+            flex-shrink: 0;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 6px;
+            color: #a0b8a0;
+            transition: all 0.15s;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .action-btn:active {
+            background: #f0f5f0;
+        }
+        
+        .btn-add-child:active {
+            color: #2d6a4f;
+            background: #e8f5e9;
+        }
+        
+        .btn-edit:active {
+            color: #e76f51;
+            background: #fff5f2;
+        }
+        
+        .btn-delete:active {
+            color: #e74c3c;
+            background: #ffeaea;
+        }
+        
+        .btn-drag {
+            cursor: grab;
+            color: #d0d8d0;
+            font-size: 18px;
+        }
+        
+        /* Child tasks */
+        .children-list {
+            margin-top: 8px;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            border-left: 2px solid #d4e8d4;
+            padding-left: 14px;
+        }
+        
+        .child-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 0;
+        }
+        
+        .child-item .checkbox {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        
+        .child-item .task-text {
+            font-size: 14px;
+        }
+        
+        .child-item .task-edit-input {
+            font-size: 14px;
+            padding: 3px 6px;
+        }
+        
+        .child-item .action-btn {
+            font-size: 14px;
+            width: 28px;
+            height: 28px;
+            padding: 4px;
+        }
+        
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            color: #a0b8a0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Back Button -->
+        <a href="index.html" class="back-btn">← Back</a>
+        
+        <h2 class="page-title">✅ To-Do List</h2>
+        <p class="page-subtitle">Stay organized. Tap a task to add subtasks.</p>
+        
+        <!-- Progress -->
+        <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="progressFill" style="width: 0%;"></div>
+        </div>
+        <div class="progress-text" id="progressText">0/0 done</div>
+        
+        <!-- Add Button -->
+        <button class="add-parent-btn" onclick="addParentTask()">➕ Add New Task</button>
+        
+        <!-- Task List -->
+        <div class="task-list" id="taskList">
+            <!-- Tasks appear here -->
+        </div>
+        
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState">
+            No tasks yet.<br>Tap "Add New Task" to get started.
+        </div>
+        
+    </div>
+
+    <script>
+        let tasks = [];
+        let draggedIndex = null;
+        
+        function loadData() {
+            const saved = localStorage.getItem('zhian_todos');
+            if (saved) {
+                tasks = JSON.parse(saved);
+            }
+        }
+        
+        function saveData() {
+            localStorage.setItem('zhian_todos', JSON.stringify(tasks));
+        }
+        
+        function generateId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+        
+        function updateProgress() {
+            let total = 0;
+            let done = 0;
+            
+            tasks.forEach(task => {
+                total++; // parent task
+                if (task.done) done++;
+                
+                if (task.children) {
+                    task.children.forEach(child => {
+                        total++;
+                        if (child.done) done++;
+                    });
+                }
+            });
+            
+            const percent = total > 0 ? Math.round((done / total) * 100) : 0;
+            document.getElementById('progressFill').style.width = percent + '%';
+            document.getElementById('progressText').textContent = done + '/' + total + ' done';
+        }
+        
+        function checkParentAutoDone(parent) {
+            if (!parent.children || parent.children.length === 0) return;
+            const allDone = parent.children.every(c => c.done);
+            parent.done = allDone;
+        }
+        
+        function getCheckboxClass(task) {
+            if (!task.children || task.children.length === 0) {
+                return task.done ? 'checked' : '';
+            }
+            const doneCount = task.children.filter(c => c.done).length;
+            if (doneCount === task.children.length) return 'checked';
+            if (doneCount > 0) return 'partial';
+            return '';
+        }
+        
+        function getCheckboxIcon(task) {
+            if (!task.children || task.children.length === 0) {
+                return task.done ? '✓' : '';
+            }
+            const doneCount = task.children.filter(c => c.done).length;
+            if (doneCount === task.children.length) return '✓';
+            if (doneCount > 0) return '−';
+            return '';
+        }
+        
+        function toggleTask(index) {
+            const task = tasks[index];
+            
+            // If has children and some are done but not all, toggle all children on
+            if (task.children && task.children.length > 0) {
+                const doneCount = task.children.filter(c => c.done).length;
+                if (doneCount > 0 && doneCount < task.children.length) {
+                    // Make all done
+                    task.children.forEach(c => c.done = true);
+                    task.done = true;
+                } else if (doneCount === task.children.length) {
+                    // Uncheck all
+                    task.children.forEach(c => c.done = false);
+                    task.done = false;
+                } else {
+                    // Check all
+                    task.children.forEach(c => c.done = true);
+                    task.done = true;
+                }
+            } else {
+                task.done = !task.done;
+            }
+            
+            saveData();
+            renderAll();
+            updateProgress();
+        }
+        
+        function toggleChild(parentIndex, childIndex) {
+            const child = tasks[parentIndex].children[childIndex];
+            child.done = !child.done;
+            checkParentAutoDone(tasks[parentIndex]);
+            saveData();
+            renderAll();
+            updateProgress();
+        }
+        
+        function addParentTask() {
+            tasks.push({
+                id: generateId(),
+                text: 'New Task',
+                done: false,
+                children: []
+            });
+            saveData();
+            renderAll();
+            updateProgress();
+        }
+        
+        function addChildTask(parentIndex) {
+            if (!tasks[parentIndex].children) {
+                tasks[parentIndex].children = [];
+            }
+            tasks[parentIndex].children.push({
+                id: generateId(),
+                text: 'New Subtask',
+                done: false
+            });
+            tasks[parentIndex].done = false;
+            saveData();
+            renderAll();
+            updateProgress();
+        }
+        
+        function deleteTask(index) {
+            if (confirm('Delete this task and all its subtasks?')) {
+                tasks.splice(index, 1);
+                saveData();
+                renderAll();
+                updateProgress();
+            }
+        }
+        
+        function deleteChild(parentIndex, childIndex) {
+            tasks[parentIndex].children.splice(childIndex, 1);
+            checkParentAutoDone(tasks[parentIndex]);
+            saveData();
+            renderAll();
+            updateProgress();
+        }
+        
+        function editTask(index, newText) {
+            tasks[index].text = newText || 'Unnamed';
+            saveData();
+        }
+        
+        function editChild(parentIndex, childIndex, newText) {
+            tasks[parentIndex].children[childIndex].text = newText || 'Unnamed';
+            saveData();
+        }
+        
+        // Drag and drop
+        function handleDragStart(e, index) {
+            draggedIndex = index;
+            e.target.closest('.task-item').classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+        
+        function handleDragEnd(e) {
+            e.target.closest('.task-item').classList.remove('dragging');
+            document.querySelectorAll('.task-item').forEach(el => el.classList.remove('drag-over'));
+            draggedIndex = null;
+        }
+        
+        function handleDragOver(e, index) {
+            e.preventDefault();
+            if (draggedIndex === null || draggedIndex === index) return;
+            e.target.closest('.task-item').classList.add('drag-over');
+        }
+        
+        function handleDragLeave(e) {
+            e.target.closest('.task-item').classList.remove('drag-over');
+        }
+        
+        function handleDrop(e, index) {
+            e.preventDefault();
+            document.querySelectorAll('.task-item').forEach(el => el.classList.remove('drag-over'));
+            if (draggedIndex === null || draggedIndex === index) return;
+            
+            const movedTask = tasks.splice(draggedIndex, 1)[0];
+            tasks.splice(index, 0, movedTask);
+            draggedIndex = null;
+            saveData();
+            renderAll();
+        }
+        
+        function startEditParent(index) {
+            const task = tasks[index];
+            const newText = prompt('Edit task:', task.text);
+            if (newText !== null && newText.trim() !== '') {
+                editTask(index, newText.trim());
+                renderAll();
+            }
+        }
+        
+        function startEditChild(parentIndex, childIndex) {
+            const child = tasks[parentIndex].children[childIndex];
+            const newText = prompt('Edit subtask:', child.text);
+            if (newText !== null && newText.trim() !== '') {
+                editChild(parentIndex, childIndex, newText.trim());
+                renderAll();
+            }
+        }
+        
+        function renderAll() {
+            const list = document.getElementById('taskList');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (tasks.length === 0) {
+                list.innerHTML = '';
+                emptyState.style.display = 'block';
+            } else {
+                emptyState.style.display = 'none';
+                list.innerHTML = tasks.map((task, index) => {
+                    const checkboxClass = getCheckboxClass(task);
+                    const checkboxIcon = getCheckboxIcon(task);
+                    
+                    let childrenHtml = '';
+                    if (task.children && task.children.length > 0) {
+                        childrenHtml = `
+                            <div class="children-list">
+                                ${task.children.map((child, cIndex) => `
+                                    <div class="child-item">
+                                        <div class="checkbox ${child.done ? 'checked' : ''}" onclick="toggleChild(${index}, ${cIndex})">
+                                            ${child.done ? '✓' : ''}
+                                        </div>
+                                        <span class="task-text ${child.done ? 'done' : ''}">${escapeHtml(child.text)}</span>
+                                        <div class="task-actions">
+                                            <button class="action-btn btn-edit" onclick="startEditChild(${index}, ${cIndex})" title="Edit">✎</button>
+                                            <button class="action-btn btn-delete" onclick="deleteChild(${index}, ${cIndex})" title="Delete">✕</button>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    }
+                    
+                    return `
+                        <div class="task-item" 
+                             draggable="true"
+                             ondragstart="handleDragStart(event, ${index})"
+                             ondragend="handleDragEnd(event)"
+                             ondragover="handleDragOver(event, ${index})"
+                             ondragleave="handleDragLeave(event)"
+                             ondrop="handleDrop(event, ${index})">
+                            <div class="task-row">
+                                <span class="action-btn btn-drag" title="Drag to reorder">⋮⋮</span>
+                                <div class="checkbox ${checkboxClass}" onclick="toggleTask(${index})">
+                                    ${checkboxIcon}
+                                </div>
+                                <span class="task-text ${task.done ? 'done' : ''}">${escapeHtml(task.text)}</span>
+                                <div class="task-actions">
+                                    <button class="action-btn btn-add-child" onclick="addChildTask(${index})" title="Add Subtask">＋</button>
+                                    <button class="action-btn btn-edit" onclick="startEditParent(${index})" title="Edit">✎</button>
+                                    <button class="action-btn btn-delete" onclick="deleteTask(${index})" title="Delete">✕</button>
+                                </div>
+                            </div>
+                            ${childrenHtml}
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+        
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+        
+        // Initialize
+        loadData();
+        renderAll();
+        updateProgress();
+    </script>
+
+</body>
+</html>
