@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhian</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f9f5;
+            color: #2d3a2d;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 42px;
+            color: #2d6a4f;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        
+        .header .tagline {
+            font-size: 15px;
+            color: #52b788;
+            font-style: italic;
+        }
+        
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        
+        .menu-card {
+            background: white;
+            border-radius: 16px;
+            padding: 22px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 2px 10px rgba(45, 106, 79, 0.08);
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .menu-card:active {
+            transform: scale(0.98);
+            box-shadow: 0 1px 5px rgba(45, 106, 79, 0.12);
+        }
+        
+        .menu-icon {
+            font-size: 32px;
+            width: 50px;
+            height: 50px;
+            background: #e8f5e9;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .menu-info h3 {
+            font-size: 18px;
+            color: #2d6a4f;
+            margin-bottom: 4px;
+        }
+        
+        .menu-info p {
+            font-size: 13px;
+            color: #6b7f6b;
+        }
+        
+        .menu-arrow {
+            margin-left: auto;
+            font-size: 20px;
+            color: #52b788;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            font-size: 12px;
+            color: #8aa88a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header">
+            <h1>Zhian</h1>
+            <p class="tagline">Stay focused. Grow daily.</p>
+        </div>
+        
+        <div class="menu">
+            
+            <!-- Updates -->
+            <a href="updates.html" class="menu-card">
+                <div class="menu-icon">📝</div>
+                <div class="menu-info">
+                    <h3>Updates</h3>
+                    <p>Short messages & motivation</p>
+                </div>
+                <div class="menu-arrow">›</div>
+            </a>
+            
+            <!-- To-Do List -->
+            <a href="todo.html" class="menu-card">
+                <div class="menu-icon">✅</div>
+                <div class="menu-info">
+                    <h3>To-Do List</h3>
+                    <p>Track your daily tasks</p>
+                </div>
+                <div class="menu-arrow">›</div>
+            </a>
+            
+            <!-- Focus Timer -->
+            <a href="timer.html" class="menu-card">
+                <div class="menu-icon">⏱️</div>
+                <div class="menu-info">
+                    <h3>Focus Timer</h3>
+                    <p>Pomodoro sessions</p>
+                </div>
+                <div class="menu-arrow">›</div>
+            </a>
+            
+            <!-- Stopwatch -->
+            <a href="stopwatch.html" class="menu-card">
+                <div class="menu-icon">⏲️</div>
+                <div class="menu-info">
+                    <h3>Stopwatch</h3>
+                    <p>Simple time tracking</p>
+                </div>
+                <div class="menu-arrow">›</div>
+            </a>
+            
+            <!-- Contact Me -->
+            <a href="contact.html" class="menu-card">
+                <div class="menu-icon">💬</div>
+                <div class="menu-info">
+                    <h3>Contact Me</h3>
+                    <p>Send me a message</p>
+                </div>
+                <div class="menu-arrow">›</div>
+            </a>
+            
+        </div>
+        
+        <div class="footer">
+            Made with love for my people 💚
+        </div>
+        
+    </div>
+
+</body>
+  </html>
