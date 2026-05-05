@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updates — Zhian</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f9f5;
+            color: #2d3a2d;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+            padding-bottom: 30px;
+        }
+        
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: #2d6a4f;
+            cursor: pointer;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+        
+        .back-btn:active {
+            opacity: 0.6;
+        }
+        
+        .page-title {
+            font-size: 28px;
+            color: #2d6a4f;
+            margin-bottom: 4px;
+        }
+        
+        .page-subtitle {
+            font-size: 14px;
+            color: #6b7f6b;
+            margin-bottom: 22px;
+        }
+        
+        /* Post Card */
+        .post-card {
+            background: white;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 2px 10px rgba(45, 106, 79, 0.06);
+            margin-bottom: 16px;
+            border-left: 4px solid #2d6a4f;
+        }
+        
+        .post-date {
+            font-size: 12px;
+            color: #8aa88a;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .post-body {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #2d3a2d;
+            white-space: pre-line;
+        }
+        
+        .post-body strong {
+            color: #2d6a4f;
+        }
+        
+        .post-signature {
+            margin-top: 12px;
+            font-style: italic;
+            color: #6b7f6b;
+        }
+        
+        /* Divider */
+        .post-divider {
+            border: none;
+            border-top: 1px solid #e0ede0;
+            margin: 18px 0 14px;
+        }
+        
+        /* Comments Section */
+        .comments-toggle {
+            background: none;
+            border: none;
+            font-size: 13px;
+            color: #52b788;
+            cursor: pointer;
+            padding: 6px 0;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .comments-toggle:active {
+            opacity: 0.6;
+        }
+        
+        .comments-section {
+            display: none;
+            margin-top: 10px;
+        }
+        
+        .comments-section.open {
+            display: block;
+        }
+        
+        .comment {
+            background: #f9fcf9;
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-bottom: 8px;
+        }
+        
+        .comment-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: #2d6a4f;
+            margin-bottom: 4px;
+        }
+        
+        .comment-text {
+            font-size: 14px;
+            color: #4a5a4a;
+            line-height: 1.5;
+        }
+        
+        .comment-time {
+            font-size: 10px;
+            color: #a0b8a0;
+            margin-top: 4px;
+        }
+        
+        /* Add Comment */
+        .add-comment {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .comment-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #d4e8d4;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            background: #fafff8;
+            color: #2d3a2d;
+            outline: none;
+            transition: border 0.2s;
+        }
+        
+        .comment-input:focus {
+            border-color: #2d6a4f;
+        }
+        
+        .comment-name-input {
+            width: 60%;
+        }
+        
+        .comment-submit {
+            padding: 10px 18px;
+            background: #2d6a4f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            align-self: flex-end;
+        }
+        
+        .comment-submit:active {
+            background: #1b4332;
+        }
+        
+        .no-comments {
+            font-size: 13px;
+            color: #a0b8a0;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Back Button -->
+        <a href="index.html" class="back-btn">← Back</a>
+        
+        <h2 class="page-title">📝 Updates</h2>
+        <p class="page-subtitle">Messages from Zhian. Drop a reply anytime.</p>
+        
+        <!-- ========== POSTS START ========== -->
+        
+        <!-- Post 1 -->
+        <div class="post-card" id="post1">
+            <div class="post-date">🌿 Sunday, May 5, 2026</div>
+            <div class="post-body">
+                <strong>🌿 Welcome to Zhian</strong>
+
+                In Kurdish, "Zhian" means life.
+
+                Hello my dear friends,
+
+                If you're reading this, you're someone special to me. You're part of a small circle of people I truly care about — and I built this little corner of the internet just for us.
+
+                <strong>Why "Zhian"?</strong>
+                Because life gets noisy. Distractions are everywhere. And sometimes we forget to pause, breathe, and focus on what really matters — our growth, our goals, and each other.
+
+                This space is simple. No ads, no algorithms, no scrolling endlessly. Just tools to help us stay productive, messages to keep us positive, and a way to stay connected.
+
+                I'll be sharing thoughts here — short updates, reminders, maybe some tough love when we need it. Feel free to drop a reply under any post. I'd love to hear from you.
+
+                <strong>A small reminder to start:</strong>
+                Progress isn't about being perfect every day. It's about showing up. Even 5 minutes of focus is better than zero. One small step today beats a giant leap you never take.
+
+                So let's grow together. One day at a time. One task at a time.
+
+                <span class="post-signature">With respect,
+                Zhian 💚</span>
+            </div>
+            
+            <hr class="post-divider">
+            
+            <!-- Comments Toggle -->
+            <button class="comments-toggle" onclick="toggleComments('comments1')">
+                💬 Replies <span id="commentCount1">(0)</span>
+            </button>
+            
+            <!-- Comments Section -->
+            <div class="comments-section" id="comments1">
+                <div class="comments-list" id="commentList1"></div>
+                
+                <div class="add-comment">
+                    <input class="comment-input comment-name-input" id="nameInput1" placeholder="Your name" maxlength="30">
+                    <textarea class="comment-input" id="textInput1" placeholder="Write a reply..." rows="2"></textarea>
+                    <button class="comment-submit" onclick="addComment(1)">Send</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ========== POSTS END ========== -->
+        
+        <!-- 
+        TO ADD A NEW POST — copy from "Post 1" to the next comment marker,
+        paste it below, change the post ID number, date, and content.
+        Example: id="post2", "comments2", "commentList2", etc.
+        -->
+        
+    </div>
+
+    <script>
+        // Load comments from localStorage
+        function loadComments(postId) {
+            const saved = localStorage.getItem('zhian_comments_' + postId);
+            return saved ? JSON.parse(saved) : [];
+        }
+        
+        // Save comments to localStorage
+        function saveComments(postId, comments) {
+            localStorage.setItem('zhian_comments_' + postId, JSON.stringify(comments));
+        }
+        
+        // Toggle comments section
+        function toggleComments(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('open');
+        }
+        
+        // Add a comment
+        function addComment(postId) {
+            const nameInput = document.getElementById('nameInput' + postId);
+            const textInput = document.getElementById('textInput' + postId);
+            const name = nameInput.value.trim();
+            const text = textInput.value.trim();
+            
+            if (!name) {
+                alert('Please enter your name.');
+                return;
+            }
+            if (!text) {
+                alert('Please write a reply.');
+                return;
+            }
+            
+            const comments = loadComments(postId);
+            comments.push({
+                name: name,
+                text: text,
+                time: new Date().toLocaleString()
+            });
+            saveComments(postId, comments);
+            
+            nameInput.value = '';
+            textInput.value = '';
+            
+            renderComments(postId);
+            updateCommentCount(postId);
+        }
+        
+        // Render comments for a post
+        function renderComments(postId) {
+            const list = document.getElementById('commentList' + postId);
+            const comments = loadComments(postId);
+            
+            if (comments.length === 0) {
+                list.innerHTML = '<div class="no-comments">No replies yet. Be the first!</div>';
+            } else {
+                list.innerHTML = comments.map(c => `
+                    <div class="comment">
+                        <div class="comment-name">${escapeHtml(c.name)}</div>
+                        <div class="comment-text">${escapeHtml(c.text)}</div>
+                        <div class="comment-time">${c.time}</div>
+                    </div>
+                `).join('');
+            }
+        }
+        
+        // Update comment count
+        function updateCommentCount(postId) {
+            const comments = loadComments(postId);
+            document.getElementById('commentCount' + postId).textContent = '(' + comments.length + ')';
+        }
+        
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+        
+        // Initialize all posts
+        function initPosts() {
+            let postId = 1;
+            while (document.getElementById('post' + postId)) {
+                renderComments(postId);
+                updateCommentCount(postId);
+                postId++;
+            }
+        }
+        
+        initPosts();
+    </script>
+
+</body>
+</html>
