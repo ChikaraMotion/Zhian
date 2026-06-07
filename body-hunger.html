@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunger & Cravings — Feminine Reality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf5f0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(180, 150, 130, 0.03) 2px,
+                    rgba(180, 150, 130, 0.03) 4px
+                );
+            color: #3a2e2a;
+            font-family: "Georgia", "Times New Roman", serif;
+            line-height: 1.8;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .page {
+            max-width: 620px;
+            width: 100%;
+            background-color: #fffdf9;
+            padding: 2.5rem 2rem;
+            border-radius: 6px;
+            box-shadow:
+                0 1px 3px rgba(0,0,0,0.04),
+                0 8px 40px rgba(0,0,0,0.05),
+                0 0 0 1px rgba(0,0,0,0.02);
+            position: relative;
+            background-image:
+                linear-gradient(
+                    to right,
+                    transparent 58px,
+                    rgba(220, 180, 170, 0.12) 58px,
+                    rgba(220, 180, 170, 0.12) 60px,
+                    transparent 60px
+                );
+            text-align: center;
+        }
+
+        .moon-phase {
+            display: inline-block;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #f5e6d8;
+            position: relative;
+            box-shadow: 0 0 20px rgba(200, 160, 120, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .moon-phase::after {
+            content: "";
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #fffdf9;
+            top: 4px;
+            right: -12px;
+        }
+
+        h1 {
+            font-size: 2.1rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: #3a2e2a;
+            margin-bottom: 0.2rem;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #a0897c;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .mantra {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c75b4a;
+            font-family: "Georgia", serif;
+            margin-bottom: 0.8rem;
+        }
+
+        .ornament {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .ornament span {
+            display: inline-block;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        .ornament span:first-child {
+            width: 5px;
+            height: 5px;
+            opacity: 0.4;
+        }
+
+        .ornament span:nth-child(2) {
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+            margin: 0 6px;
+        }
+
+        .ornament span:last-child {
+            width: 5px;
+            height: 5px;
+            opacity: 0.4;
+        }
+
+        .back-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(180, 150, 130, 0.4);
+            text-decoration: none;
+            color: #8d6e63;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: transparent;
+            margin: 0.2rem 0;
+        }
+
+        .back-circle:hover {
+            border-color: #c75b4a;
+            color: #c75b4a;
+            background: rgba(199, 91, 74, 0.04);
+transform: translateX(-3px);
+        }
+
+        .content {
+            text-align: left;
+            margin: 1rem 0;
+        }
+
+        .content h2 {
+            font-size: 1.4rem;
+            font-weight: normal;
+            color: #5d4037;
+            margin: 2rem 0 1rem 0;
+            padding-left: 0.8rem;
+            border-left: 3px solid #c75b4a;
+        }
+
+        .content h2:first-of-type {
+            margin-top: 0.2rem;
+        }
+
+        .content h3 {
+            font-size: 1.15rem;
+            font-weight: normal;
+            color: #7b5e54;
+            margin: 1.2rem 0 0.5rem 0;
+            padding-left: 0.8rem;
+            font-style: italic;
+        }
+
+        .content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            padding-left: 0.8rem;
+        }
+
+        .emphasis {
+            color: #c75b4a;
+            font-style: italic;
+        }
+
+        .gentle-list {
+            list-style: none;
+            margin: 0.5rem 0 1rem 1.8rem;
+        }
+
+        .gentle-list li {
+            margin-bottom: 0.6rem;
+            font-size: 0.98rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .gentle-list li::before {
+            content: "•";
+            color: #c75b4a;
+            position: absolute;
+            left: 0;
+            opacity: 0.7;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #fef7f3, #fdf2ec);
+            border: 1px solid rgba(180, 150, 130, 0.2);
+            border-left: 4px solid #d4957b;
+            padding: 1.2rem 1.3rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0 1.5rem 0.8rem;
+        }
+
+        .info-card p {
+            margin-bottom: 0;
+            padding-left: 0;
+            font-size: 0.95rem;
+        }
+
+        .info-card strong {
+            display: block;
+            color: #5d4037;
+            margin-bottom: 0.3rem;
+        }
+
+        .whisper {
+            margin-top: 1rem;
+            padding-top: 1.2rem;
+            border-top: 1px dotted #e0cfc4;
+            font-size: 0.85rem;
+            color: #a0897c;
+            font-style: italic;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .accent-dot {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            opacity: 0.4;
+            margin: 0 3px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 550px) {
+            .page {
+                padding: 1.8rem 1.2rem;
+            }
+            .content p, .content h2, .content h3 {
+                padding-left: 0.3rem;
+            }
+            .gentle-list {
+                margin-left: 0.8rem;
+            }
+            .info-card {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <div class="moon-phase"></div>
+    <h1>Feminine Reality</h1>
+    <div class="tagline">Still the moon, even when hidden</div>
+    <div class="mantra">Lunar, Not Linear</div>
+
+    <div class="ornament">
+        <span></span><span></span><span></span>
+    </div>
+
+    <a href="body.html" class="back-circle" title="Back to Body Basics">←</a>
+
+    <div class="ornament">
+        <span></span><span></span><span></span>
+    </div>
+
+    <div class="content">
+
+        <h2>Hunger & Cravings</h2>
+
+        <p>
+            Some days you feel like you could eat the whole kitchen. Other days nothing sounds right. 
+            <span class="emphasis">This is not a lack of willpower.</span> This is your body talking — and it's worth listening to.
+        </p>
+
+        <h3>Before your period (week 3–4 of your cycle)</h3>
+        <p>
+            Progesterone rises, metabolism increases slightly, and your body craves carbohydrates and fats. 
+            This is real. Your body needs more energy in the second half of your cycle. 
+            Cravings for chocolate, bread, salty chips, or red meat are common. 
+            <span class="emphasis">Not weakness. Biology.</span>
+</p>
+
+        <h3>During your period</h3>
+        <p>
+            Some people lose their appetite. Others feel hungrier than ever, especially for warm, comforting food. 
+            Both are normal. Your body is expending energy to shed the uterine lining — that takes fuel.
+        </p>
+
+        <h3>Puberty — growing requires fuel</h3>
+        <p>
+            Your body is building new tissue, laying down bone, changing shape. 
+            Feeling suddenly starving — even right after a meal — is common during growth spurts. 
+            It doesn't mean you're greedy. It means you're growing.
+        </p>
+
+        <h3>Emotional hunger</h3>
+        <p>
+            Stress, sadness, loneliness, boredom — all can feel like physical hunger. 
+            That doesn't make it fake. It just means food isn't always the answer. 
+            Sometimes you need rest, tears, or quiet.
+        </p>
+
+        <div class="info-card">
+            <strong>🌙 A quiet note</strong>
+            <p>Your body does not have a moral scoreboard. Eating when you're hungry — even if that hunger showed up for emotional reasons — is not a failure. You are allowed to eat. You are allowed to feel. Both can be true at once.</p>
+        </div>
+
+        <h2>What helps (gentle, not a diet)</h2>
+        <ul class="gentle-list">
+            <li>If you're craving something specific before your period — <span class="emphasis">eat it.</span> A little of what you want often stops the endless searching.</li>
+            <li>Pair cravings with something that gives longer energy — chocolate with a handful of nuts, chips with yogurt dip.</li>
+            <li>Hunger that feels urgent, shaky, or dizzy between meals might mean blood sugar dipped. Eating smaller, more frequent meals can help.</li>
+            <li>If you feel out of control around food often — or feel guilty every time you eat — that's worth talking to someone safe about. You deserve peace with food.</li>
+        </ul>
+
+        <p>
+            Cravings are not a sign that you're broken. They are often a sign that your body is doing exactly what it evolved to do — 
+            gather energy for the work of being alive.
+        </p>
+
+        <div class="ornament" style="margin: 1.8rem 0 0.8rem;">
+            <span></span><span></span><span></span>
+        </div>
+
+        <p style="font-style: italic; text-align: center; color: #a0897c; font-size: 0.9rem; padding-left: 0;">
+            Hunger is not your enemy. It is not shameful.<br>
+            It is how your body asks for what it needs — and you are allowed to answer.<br>
+            You don't have to earn food. You don't have to justify it. You just have to eat. 🌙
+        </p>
+
+    </div>
+
+    <div class="ornament">
+        <span></span><span></span><span></span>
+    </div>
+
+
+</div>
+
+</body>
+</html>

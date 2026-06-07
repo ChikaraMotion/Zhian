@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discharge — Feminine Reality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf5f0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(180, 150, 130, 0.03) 2px,
+                    rgba(180, 150, 130, 0.03) 4px
+                );
+            color: #3a2e2a;
+            font-family: "Georgia", "Times New Roman", serif;
+            line-height: 1.8;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 2.5rem;
+        }
+
+        .page {
+            max-width: 620px;
+            width: 100%;
+            background-color: #fffdf9;
+            padding: 3rem 3rem;
+            border-radius: 6px;
+            box-shadow:
+                0 1px 3px rgba(0,0,0,0.04),
+                0 8px 40px rgba(0,0,0,0.05),
+                0 0 0 1px rgba(0,0,0,0.02);
+            position: relative;
+            background-image:
+                linear-gradient(
+                    to right,
+                    transparent 58px,
+                    rgba(220, 180, 170, 0.15) 58px,
+                    rgba(220, 180, 170, 0.15) 60px,
+                    transparent 60px
+                );
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .moon-phase {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #f5e6d8;
+            position: relative;
+            box-shadow:
+                0 0 30px rgba(200, 160, 120, 0.25),
+                inset 0 0 10px rgba(180, 140, 100, 0.15);
+            margin-bottom: 1.2rem;
+        }
+
+        .moon-phase::after {
+            content: "";
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #fffdf9;
+            top: 4px;
+            right: -14px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: #3a2e2a;
+            margin-bottom: 0.2rem;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #a0897c;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .mantra {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c75b4a;
+            font-family: "Georgia", serif;
+            margin-bottom: 1rem;
+        }
+
+        .ornament {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .ornament span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            margin: 0 5px;
+            opacity: 0.5;
+            vertical-align: middle;
+        }
+
+        .ornament span:nth-child(2) {
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+        }
+
+        .ornament span:nth-child(3) {
+            opacity: 0.4;
+        }
+
+        .back-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(180, 150, 130, 0.4);
+            text-decoration: none;
+            color: #8d6e63;
+            font-size: 1.1rem;
+            transition: all 0.35s ease;
+            margin-bottom: 0.5rem;
+            background: transparent;
+        }
+.back-circle:hover {
+            border-color: #c75b4a;
+            color: #c75b4a;
+            background: rgba(199, 91, 74, 0.04);
+            transform: translateX(-3px);
+        }
+
+        .content-section {
+            text-align: left;
+            padding: 0 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .content-section h2 {
+            font-size: 1.4rem;
+            font-weight: normal;
+            color: #5d4037;
+            margin: 2.5rem 0 1rem 0;
+            padding-left: 1rem;
+            border-left: 3px solid #c75b4a;
+        }
+
+        .content-section h2:first-child {
+            margin-top: 0.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            padding-left: 1rem;
+        }
+
+        .emphasis {
+            color: #c75b4a;
+            font-style: italic;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #fef7f3, #fdf2ec);
+            border: 1px solid rgba(180, 150, 130, 0.2);
+            border-left: 4px solid #d4957b;
+            padding: 1.5rem 1.5rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1.5rem 0 1.5rem 1rem;
+            text-align: left;
+        }
+
+        .info-card strong {
+            display: block;
+            color: #5d4037;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .whisper {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px dotted #e0cfc4;
+            font-size: 0.85rem;
+            color: #a0897c;
+            font-style: italic;
+            text-align: center;
+            line-height: 2;
+        }
+
+        .accent-float {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            opacity: 0.4;
+            margin: 0 3px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+
+        <div class="moon-phase"></div>
+        <h1>Feminine Reality</h1>
+        <div class="tagline">Still the moon, even when hidden</div>
+        <div class="mantra">Lunar, Not Linear</div>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <a href="body.html" class="back-circle" title="Back to Body Basics">←</a>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <div class="content-section">
+
+            <h2>Discharge</h2>
+
+            <p>
+                Nobody told you this was normal. Nobody said, "One day you'll find
+                something in your underwear that isn't blood, and it will be okay."
+                Instead, you noticed it alone. You wondered if you were dirty.
+                You wondered if something was wrong.
+            </p>
+
+            <p>
+                <span class="emphasis">Nothing is wrong.</span> Discharge is not dirt. It is not infection
+                by default. It is the vagina cleaning itself — a self-washing system
+                that produces fluid to carry away old cells and maintain a healthy
+                balance. You are supposed to have it.
+            </p>
+
+            <h2>How It Changes Across Your Cycle</h2>
+
+            <p>
+                Discharge is not the same every day. It follows a rhythm tied to
+                your menstrual cycle. Knowing the pattern can help you understand
+                what your body is doing — and when something might be off.
+            </p>
+
+            <p>
+                <span class="emphasis">Right after your period:</span> You may have very little discharge,
+                or feel quite dry. This is normal.
+            </p>
+<p>
+                <span class="emphasis">Mid-cycle, around ovulation:</span> Discharge increases and becomes
+                clear, wet, slippery, and stretchy — like raw egg white. This is
+                fertile mucus. It can last a few days. You might feel a sudden
+                gush of fluid — that is discharge, not urine. Normal.
+            </p>
+
+            <p>
+                <span class="emphasis">After ovulation, before your period:</span> Discharge becomes
+                thicker, creamier, and white or slightly yellow. It may decrease
+                or become thicker still as your period approaches.
+            </p>
+
+            <p>
+                <span class="emphasis">When it dries on underwear:</span> It may look yellowish or stiff.
+                That's oxidation — exposure to air — not infection. It can even
+                bleach dark fabric over time. The vagina is naturally acidic.
+                This is normal, not alarming.
+            </p>
+
+            <h2>What Healthy Discharge Looks Like</h2>
+
+            <p>
+                Color: clear, white, off-white, or slightly yellow.<br>
+                Texture: sticky, creamy, or slippery and stretchy — depending on the day.<br>
+                Amount: varies from person to person. Some have a lot every day.
+                Some have very little. <span class="emphasis">Both are normal.</span><br>
+                Scent: mild, musky, slightly sour. Not odorless — but not foul.
+            </p>
+
+            <p>
+                Your discharge will not always look exactly the same. It changes
+                with hydration, stress, diet, and where you are in your cycle.
+                This is not a sign that something is wrong. It's a sign that your
+                body is responsive and alive.
+            </p>
+
+            <h2>About Products</h2>
+
+            <p>
+                You do not need scented washes, douches, sprays, or "feminine hygiene"
+                products. The vagina cleans itself. These products disrupt its natural
+                balance and can cause irritation or infections.
+                <span class="emphasis">Water is enough.</span> Mild, unscented soap on the external skin
+                only — never inside.
+            </p>
+
+            <div class="info-card">
+                <strong>💧 When to check with a doctor</strong>
+                <p>
+                    Discharge that is green, grey, or frothy. A strong, fishy odor.
+                    Itching, burning, redness, or swelling around the vulva.
+                    A texture like cottage cheese (possible yeast infection).
+                    These are not shameful. They are medical conditions — common,
+                    treatable, and not your fault. You are not dirty. You just need
+                    help, and help exists.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <p class="whisper">
+            You are not dirty.<br>
+            You are a body that cleans itself, protects itself, knows itself.<br>
+            That fluid is not a flaw. It is a function. <span class="accent-float"></span> 🌙
+        </p>
+
+    </div>
+
+</body>
+</html>

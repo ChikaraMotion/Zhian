@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productivity & Refresh</title>
+  <style>
+    :root{
+      --bg-1:#070b14;
+      --bg-2:#0d1324;
+      --card-bg:rgba(16, 22, 40, 0.72);
+      --card-border:rgba(120, 180, 255, 0.18);
+      --text:#eaf2ff;
+      --muted:#9fb3d9;
+      --cyan:#55e6ff;
+      --purple:#9b5cff;
+      --pink:#ff4fd8;
+      --green:#54f0a5;
+      --shadow:0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(circle at top left, rgba(155,92,255,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(85,230,255,0.12), transparent 30%),
+        radial-gradient(circle at bottom center, rgba(255,79,216,0.10), transparent 25%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      overflow-x:hidden;
+    }
+
+    .page-shell{
+      width:min(1150px, 92%);
+      margin:0 auto;
+      padding:32px 0 60px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:28px;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:0.4px;
+    }
+
+    .brand-badge{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, rgba(85,230,255,0.22), rgba(155,92,255,0.22));
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 0 20px rgba(85,230,255,0.16);
+      font-size:1.2rem;
+    }
+
+    .back-link{
+      text-decoration:none;
+      color:var(--text);
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      transition:0.25s ease;
+    }
+
+    .back-link:hover{
+      transform:translateY(-2px);
+      border-color:rgba(85,230,255,0.35);
+      box-shadow:0 0 18px rgba(85,230,255,0.18);
+    }
+
+    .hero{
+      position:relative;
+      padding:42px 28px;
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      margin-bottom:28px;
+    }
+
+    .hero::before,
+    .hero::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      filter:blur(20px);
+      opacity:0.45;
+      pointer-events:none;
+    }
+
+    .hero::before{
+      width:180px;
+      height:180px;
+      background:rgba(85,230,255,0.18);
+      top:-40px;
+      right:60px;
+    }
+
+    .hero::after{
+      width:220px;
+      height:220px;
+      background:rgba(155,92,255,0.16);
+      bottom:-80px;
+      left:-30px;
+    }
+
+    .hero h1{
+      font-size:clamp(2rem, 4vw, 3.2rem);
+      line-height:1.1;
+      margin-bottom:14px;
+      text-shadow:0 0 24px rgba(85,230,255,0.12);
+    }
+
+    .hero p{
+      color:var(--muted);
+      max-width:680px;
+      font-size:1.05rem;
+      line-height:1.7;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin:20px 0 18px;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .section-title h2{
+      font-size:1.3rem;
+      letter-spacing:0.3px;
+    }
+
+    .section-title span{
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:18px;
+    }
+
+    .menu-card{
+      text-decoration:none;
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      gap:16px;
+      padding:20px 18px;
+      border-radius:22px;
+      background:var(--card-bg);
+      border:1px solid var(--card-border);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      box-shadow:var(--shadow);
+      transition:transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .menu-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent, rgba(255,255,255,0.05), transparent);
+      transform:translateX(-120%);
+      transition:0.55s ease;
+    }
+
+    .menu-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(85,230,255,0.4);
+      box-shadow:
+        0 14px 38px rgba(0,0,0,0.38),
+        0 0 26px rgba(85,230,255,0.14);
+    }
+
+    .menu-card:hover::before{
+      transform:translateX(120%);
+    }
+
+    .menu-icon{
+      width:58px;
+      height:58px;
+      min-width:58px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      font-size:1.5rem;
+      background:linear-gradient(135deg, rgba(85,230,255,0.18), rgba(155,92,255,0.18));
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 0 20px rgba(155,92,255,0.10);
+    }
+
+    .menu-info{
+      flex:1;
+    }
+
+    .menu-info h3{
+      font-size:1.08rem;
+      margin-bottom:6px;
+    }
+
+    .menu-info p{
+      color:var(--muted);
+      font-size:0.95rem;
+      line-height:1.5;
+    }
+
+    .menu-arrow{
+      font-size:1.5rem;
+      color:var(--cyan);
+      opacity:0.9;
+    }
+
+    .footer-note{
+      margin-top:28px;
+      padding:18px 20px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    @media (max-width:640px){
+      .hero{
+        padding:30px 20px;
+      }
+
+      .menu-card{
+        padding:18px 16px;
+      }
+
+      .menu-icon{
+        width:52px;
+        height:52px;
+        min-width:52px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-badge">🔮</div>
+        <div>Algorithmic Brew Lounge</div>
+      </div>
+      <a href="games.html" class="back-link">← Back to Game Hub</a>
+    </div>
+
+    <section class="hero">
+      <h1>Productivity & Refresh</h1>
+      <p>
+        Step into a calm neon corner designed to help you reset your mind.
+        Choose a light activity, take a mindful pause, and return with better focus.
+      </p>
+    </section>
+
+    <div class="section-title">
+      <h2>Choose an activity</h2>
+      <span>Mindful tools • Quick reset • Focus support</span>
+    </div>
+
+    <section class="menu-grid">
+      <a href="breathing.html" class="menu-card">
+        <div class="menu-icon">🌬️</div>
+        <div class="menu-info">
+          <h3>Breathing</h3>
+          <p>Relax, reset, and refocus with guided breathing.</p>
+        </div>
+        <div class="menu-arrow">›</div>
+      </a>
+
+      <a href="#" class="menu-card">
+        <div class="menu-icon">⏳</div>
+        <div class="menu-info">
+          <h3>Mini Break</h3>
+          <p>Take a short pause to recharge between study sessions.</p>
+        </div>
+        <div class="menu-arrow">›</div>
+      </a>
+
+      <a href="#" class="menu-card">
+        <div class="menu-icon">🧠</div>
+        <div class="menu-info">
+          <h3>Focus Reset</h3>
+          <p>Clear distractions and get back into concentration mode.</p>
+        </div>
+        <div class="menu-arrow">›</div>
+      </a>
+
+      <a href="#" class="menu-card">
+        <div class="menu-icon">🧘</div>
+        <div class="menu-info">
+          <h3>Stretch & Relax</h3>
+          <p>Gentle movement ideas for a quick body and mind refresh.</p>
+        </div>
+        <div class="menu-arrow">›</div>
+      </a>
+    </section>
+
+    <div class="footer-note">
+      This page keeps the same neon-glass style as the main game hub so the experience feels connected.
+      You can now build each activity as its own page, starting with <strong>breathing.html</strong>.
+    </div>
+
+  </div>
+</body>
+</html>

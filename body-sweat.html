@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweat & Odor — Feminine Reality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf5f0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(180, 150, 130, 0.03) 2px,
+                    rgba(180, 150, 130, 0.03) 4px
+                );
+            color: #3a2e2a;
+            font-family: "Georgia", "Times New Roman", serif;
+            line-height: 1.8;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 2.5rem;
+        }
+
+        .page {
+            max-width: 620px;
+            width: 100%;
+            background-color: #fffdf9;
+            padding: 3rem 3rem;
+            border-radius: 6px;
+            box-shadow:
+                0 1px 3px rgba(0,0,0,0.04),
+                0 8px 40px rgba(0,0,0,0.05),
+                0 0 0 1px rgba(0,0,0,0.02);
+            position: relative;
+            background-image:
+                linear-gradient(
+                    to right,
+                    transparent 58px,
+                    rgba(220, 180, 170, 0.15) 58px,
+                    rgba(220, 180, 170, 0.15) 60px,
+                    transparent 60px
+                );
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .moon-phase {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #f5e6d8;
+            position: relative;
+            box-shadow:
+                0 0 30px rgba(200, 160, 120, 0.25),
+                inset 0 0 10px rgba(180, 140, 100, 0.15);
+            margin-bottom: 1.2rem;
+        }
+
+        .moon-phase::after {
+            content: "";
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #fffdf9;
+            top: 4px;
+            right: -14px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: #3a2e2a;
+            margin-bottom: 0.2rem;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #a0897c;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .mantra {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c75b4a;
+            font-family: "Georgia", serif;
+            margin-bottom: 1rem;
+        }
+
+        .ornament {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .ornament span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            margin: 0 5px;
+            opacity: 0.5;
+            vertical-align: middle;
+        }
+
+        .ornament span:nth-child(2) {
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+        }
+
+        .ornament span:nth-child(3) {
+            opacity: 0.4;
+        }
+
+        .back-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(180, 150, 130, 0.4);
+            text-decoration: none;
+            color: #8d6e63;
+            font-size: 1.1rem;
+            transition: all 0.35s ease;
+            margin-bottom: 0.5rem;
+            background: transparent;
+        }
+.back-circle:hover {
+            border-color: #c75b4a;
+            color: #c75b4a;
+            background: rgba(199, 91, 74, 0.04);
+            transform: translateX(-3px);
+        }
+
+        .content-section {
+            text-align: left;
+            padding: 0 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .content-section h2 {
+            font-size: 1.4rem;
+            font-weight: normal;
+            color: #5d4037;
+            margin: 2.5rem 0 1rem 0;
+            padding-left: 1rem;
+            border-left: 3px solid #c75b4a;
+        }
+
+        .content-section h2:first-child {
+            margin-top: 0.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            padding-left: 1rem;
+        }
+
+        .emphasis {
+            color: #c75b4a;
+            font-style: italic;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #fef7f3, #fdf2ec);
+            border: 1px solid rgba(180, 150, 130, 0.2);
+            border-left: 4px solid #d4957b;
+            padding: 1.5rem 1.5rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1.5rem 0 1.5rem 1rem;
+            text-align: left;
+        }
+
+        .info-card strong {
+            display: block;
+            color: #5d4037;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .whisper {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px dotted #e0cfc4;
+            font-size: 0.85rem;
+            color: #a0897c;
+            font-style: italic;
+            text-align: center;
+            line-height: 2;
+        }
+
+        .accent-float {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            opacity: 0.4;
+            margin: 0 3px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+
+        <div class="moon-phase"></div>
+        <h1>Feminine Reality</h1>
+        <div class="tagline">Still the moon, even when hidden</div>
+        <div class="mantra">Lunar, Not Linear</div>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <a href="body.html" class="back-circle" title="Back to Body Basics">←</a>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <div class="content-section">
+
+            <h2>Sweat &amp; Odor</h2>
+
+            <p>
+                You were taught your body should smell like nothing — or like vanilla,
+                coconut, a meadow of flowers. Anything but human. But your body is
+                human. It has scent. It has moisture. It has glands that work all day
+                without your permission. <span class="emphasis">This is not failure. This is function.</span>
+            </p>
+
+            <h2>Why We Sweat</h2>
+
+            <p>
+                Sweat is thermoregulation — your body's way of cooling itself. When
+                you're hot, when you're moving, when you're stressed, your sweat glands
+                release fluid onto your skin. As it evaporates, it draws heat away.
+                You are not gross. You are a body that knows how to survive summer,
+                exercise, and anxiety.
+            </p>
+
+            <h2>Two Types of Sweat Glands</h2>
+
+            <p>
+                <span class="emphasis">Eccrine glands</span> are everywhere — all over your body. They produce
+                a watery, odorless sweat for cooling. These are active from birth.
+            </p>
+<p>
+                <span class="emphasis">Apocrine glands</span> are concentrated in your underarms and groin.
+                They become active during puberty. They produce a thicker, milky
+                fluid — and this is the sweat that interacts with bacteria on your
+                skin to create body odor.
+            </p>
+
+            <p>
+                If your body odor changed suddenly during puberty, you were not
+                doing anything wrong. Your apocrine glands had simply turned on —
+                exactly when they were supposed to.
+            </p>
+
+            <h2>Where the Odor Comes From</h2>
+
+            <p>
+                Sweat itself is odorless when it leaves the gland. The smell happens
+                when bacteria on your skin break down the sweat. That's it.
+                <span class="emphasis">Body odor is not your fault.</span> It's a chemical reaction you
+                cannot control — only manage, if you choose to.
+            </p>
+
+            <p>
+                Hormones, stress, diet, and hydration all affect how you smell.
+                Some days you'll notice it more. Some days less. Your scent changes
+                across your cycle. This is not a sign something is wrong.
+            </p>
+
+            <h2>Vaginal Odor</h2>
+
+            <p>
+                The vagina has its own scent. It is not supposed to smell like flowers,
+                soap, or nothing. A healthy vaginal scent is musky, slightly sour,
+                sometimes metallic near your period. It changes with your cycle,
+                with exercise, with hydration, with diet.
+            </p>
+
+            <p>
+                You do not need scented washes, douches, or deodorizing products
+                for your vulva. <span class="emphasis">Water is enough.</span> These products disrupt
+                the natural balance and can cause the very odor you're trying to
+                prevent.
+            </p>
+
+            <div class="info-card">
+                <strong>🌬️ When to check with a doctor</strong>
+                <p>
+                    A sudden strong change in vaginal odor — especially a fishy
+                    smell — along with discharge changes, itching, or burning.
+                    These can signal an infection, and infections are common,
+                    treatable, and not shameful.
+                </p>
+            </div>
+
+            <h2>Deodorant &amp; Antiperspirant</h2>
+
+            <p>
+                Deodorant masks or neutralizes odor. Antiperspirant reduces sweat
+                itself. Both are optional. You can use them if you want. You can
+                skip them if you don't. Wearing deodorant does not make you more
+                put-together. Skipping it does not make you unhygienic.
+            </p>
+
+            <p>
+                If you choose to use deodorant, look for something mild. Strong
+                fragrances can irritate sensitive skin — especially in the underarm
+                area, where the skin is thin. You don't need to punish your body
+                into smelling like a product.
+            </p>
+
+        </div>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <p class="whisper">
+            You are not supposed to smell like a flower.<br>
+            You are supposed to smell like a body — alive, working, changing.<br>
+            That scent is not a secret to hide. It is proof you are here. <span class="accent-float"></span> 🌙
+        </p>
+
+    </div>
+
+</body>
+</html>

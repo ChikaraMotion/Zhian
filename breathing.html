@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breathing Game</title>
+  <style>
+    :root{
+      --bg-1:#070b14;
+      --bg-2:#0d1324;
+      --card-bg:rgba(16, 22, 40, 0.72);
+      --card-border:rgba(120, 180, 255, 0.18);
+      --text:#eaf2ff;
+      --muted:#9fb3d9;
+      --cyan:#55e6ff;
+      --purple:#9b5cff;
+      --pink:#ff4fd8;
+      --shadow:0 10px 30px rgba(0,0,0,0.35);
+      --success:#54f0a5;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(circle at top left, rgba(155,92,255,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(85,230,255,0.12), transparent 30%),
+        radial-gradient(circle at bottom center, rgba(255,79,216,0.10), transparent 25%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      overflow-x:hidden;
+    }
+
+    .page-shell{
+      width:min(900px, 92%);
+      margin:0 auto;
+      padding:32px 0 60px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:0.4px;
+    }
+
+    .brand-badge{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, rgba(85,230,255,0.22), rgba(155,92,255,0.22));
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 0 20px rgba(85,230,255,0.16);
+      font-size:1.2rem;
+    }
+
+    .back-link{
+      text-decoration:none;
+      color:var(--text);
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      transition:0.25s ease;
+    }
+
+    .back-link:hover{
+      transform:translateY(-2px);
+      border-color:rgba(85,230,255,0.35);
+      box-shadow:0 0 18px rgba(85,230,255,0.18);
+    }
+
+    .hero{
+      padding:36px 26px;
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+    }
+
+    .hero h1{
+      font-size:clamp(2rem, 4vw, 3rem);
+      line-height:1.1;
+      margin-bottom:12px;
+      text-shadow:0 0 24px rgba(85,230,255,0.12);
+    }
+
+    .hero p{
+      color:var(--muted);
+      line-height:1.7;
+      max-width:720px;
+      font-size:1.02rem;
+    }
+
+    .game-card{
+      padding:28px 24px;
+      border-radius:28px;
+      background:var(--card-bg);
+      border:1px solid var(--card-border);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .game-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent, rgba(255,255,255,0.05), transparent);
+      transform:translateX(-120%);
+      animation:shine 6s linear infinite;
+      pointer-events:none;
+    }
+
+    @keyframes shine{
+      0%{ transform:translateX(-120%); }
+      45%{ transform:translateX(120%); }
+      100%{ transform:translateX(120%); }
+    }
+
+    .status-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:22px;
+    }
+
+    .status-pill{
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    .timer-wrap{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:18px;
+      padding:26px 18px 8px;
+    }
+
+    .circle{
+      width:min(320px, 78vw);
+      aspect-ratio:1;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      position:relative;
+      background:
+        radial-gradient(circle at center, rgba(85,230,255,0.08), rgba(155,92,255,0.08));
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:
+        0 0 0 14px rgba(85,230,255,0.03),
+        0 0 40px rgba(85,230,255,0.10),
+        0 0 70px rgba(155,92,255,0.08);
+      transition:transform 1s ease, box-shadow 1s ease, background 1s ease;
+    }
+
+    .circle::before{
+      content:"";
+      position:absolute;
+      inset:18px;
+      border-radius:50%;
+      border:1px dashed rgba(85,230,255,0.18);
+      opacity:0.8;
+    }
+
+    .circle.inhale{
+      transform:scale(1.12);
+      box-shadow:
+        0 0 0 18px rgba(85,230,255,0.04),
+        0 0 50px rgba(85,230,255,0.18),
+        0 0 90px rgba(155,92,255,0.12);
+    }
+
+    .circle.hold{
+      transform:scale(1.12);
+      box-shadow:
+        0 0 0 18px rgba(255,79,216,0.04),
+        0 0 55px rgba(255,79,216,0.16),
+        0 0 90px rgba(85,230,255,0.10);
+    }
+
+    .circle.exhale{
+      transform:scale(0.95);
+      box-shadow:
+        0 0 0 14px rgba(84,240,165,0.04),
+        0 0 45px rgba(84,240,165,0.14),
+        0 0 72px rgba(85,230,255,0.08);
+    }
+
+    .circle-content{
+      text-align:center;
+      z-index:1;
+      padding:20px;
+    }
+
+    .phase{
+      font-size:1.1rem;
+      color:var(--cyan);
+      margin-bottom:10px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+
+    .countdown{
+      font-size:clamp(3rem, 10vw, 5rem);
+      font-weight:800;
+      line-height:1;
+      margin-bottom:8px;
+      text-shadow:0 0 18px rgba(85,230,255,0.18);
+    }
+
+    .instruction{
+      color:var(--muted);
+      font-size:1rem;
+      line-height:1.5;
+    }
+
+    .controls{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:10px;
+    }
+
+    .btn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      color:var(--text);
+      padding:12px 18px;
+      border-radius:14px;
+      font-weight:700;
+      letter-spacing:0.2px;
+      background:linear-gradient(135deg, rgba(85,230,255,0.18), rgba(155,92,255,0.18));
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 0 20px rgba(85,230,255,0.08);
+      transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      border-color:rgba(85,230,255,0.35);
+      box-shadow:0 0 22px rgba(85,230,255,0.18);
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,0.04);
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+      gap:14px;
+      margin-top:22px;
+    }
+
+    .info-box{
+      padding:16px 18px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .info-box h3{
+      font-size:0.98rem;
+      margin-bottom:8px;
+      color:var(--success);
+    }
+
+    .info-box p{
+      color:var(--muted);
+      font-size:0.94rem;
+      line-height:1.6;
+    }
+
+    .note{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:0.93rem;
+      line-height:1.7;
+      text-align:center;
+    }
+
+    @media (max-width:640px){
+      .hero, .game-card{
+        padding:22px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-badge">🌬️</div>
+        <div>Breathing Game</div>
+      </div>
+      <a href="productivity.html" class="back-link">← Back</a>
+    </div>
+
+    <section class="hero">
+      <h1>Breathing</h1>
+      <p>
+        Follow the glowing rhythm. Breathe in, hold, and breathe out.
+        Use this simple loop to calm your body and reset your focus.
+      </p>
+    </section>
+
+    <section class="game-card">
+      <div class="status-row">
+        <div class="status-pill" id="statusText">Ready to begin</div>
+        <div class="status-pill">Cycle: Inhale → Hold → Exhale</div>
+      </div>
+
+      <div class="timer-wrap">
+        <div class="circle" id="breathCircle">
+          <div class="circle-content">
+            <div class="phase" id="phaseText">Ready</div>
+            <div class="countdown" id="countdown">3</div>
+            <div class="instruction" id="instructionText">Press Start to begin</div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button class="btn" id="startBtn">Start</button>
+          <button class="btn secondary" id="resetBtn">Reset</button>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <h3>Inhale</h3>
+          <p>Breathe in slowly through your nose for 4 seconds.</p>
+        </div>
+        <div class="info-box">
+          <h3>Hold</h3>
+          <p>Keep the breath steady and relaxed for 4 seconds.</p>
+        </div>
+        <div class="info-box">
+          <h3>Exhale</h3>
+          <p>Release the air gently for 6 seconds.</p>
+        </div>
+      </div>
+
+      <div class="note">
+        Tip: Close your eyes and let the neon pulse guide your rhythm.
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const circle = document.getElementById("breathCircle");
+    const phaseText = document.getElementById("phaseText");
+    const countdown = document.getElementById("countdown");
+    const instructionText = document.getElementById("instructionText");
+    const statusText = document.getElementById("statusText");
+    const startBtn = document.getElementById("startBtn");
+    const resetBtn = document.getElementById("resetBtn");
+
+    let timer = null;
+    let running = false;
+
+    const phases = [
+      { name: "Inhale", className: "inhale", seconds: 4, instruction: "Breathe in slowly" },
+      { name: "Hold", className: "hold", seconds: 4, instruction: "Hold gently" },
+      { name: "Exhale", className: "exhale", seconds: 6, instruction: "Breathe out slowly" }
+    ];
+
+    function setPhase(index) {
+      const phase = phases[index];
+      circle.className = "circle " + phase.className;
+      phaseText.textContent = phase.name;
+      instructionText.textContent = phase.instruction;
+      let sec = phase.seconds;
+      countdown.textContent = sec;
+
+      timer = setInterval(() => {
+        sec--;
+        countdown.textContent = sec;
+        if (sec <= 0) {
+          clearInterval(timer);
+          nextPhase(index);
+        }
+      }, 1000);
+    }
+
+    function nextPhase(currentIndex) {
+      const nextIndex = (currentIndex + 1) % phases.length;
+      setPhase(nextIndex);
+    }
+
+    function startBreathing() {
+      if (running) return;
+      running = true;
+      statusText.textContent = "Breathing in progress";
+      startBtn.textContent = "Running";
+      startBtn.disabled = true;
+      setPhase(0);
+    }
+
+    function resetBreathing() {
+      clearInterval(timer);
+      running = false;
+      circle.className = "circle";
+      phaseText.textContent = "Ready";
+      countdown.textContent = "3";
+      instructionText.textContent = "Press Start to begin";
+      statusText.textContent = "Ready to begin";
+      startBtn.textContent = "Start";
+      startBtn.disabled = false;
+    }
+
+    startBtn.addEventListener("click", startBreathing);
+    resetBtn.addEventListener("click", resetBreathing);
+  </script>
+</body>
+</html>

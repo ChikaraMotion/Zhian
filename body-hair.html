@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Hair — Feminine Reality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf5f0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(180, 150, 130, 0.03) 2px,
+                    rgba(180, 150, 130, 0.03) 4px
+                );
+            color: #3a2e2a;
+            font-family: "Georgia", "Times New Roman", serif;
+            line-height: 1.8;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 2.5rem;
+        }
+
+        .page {
+            max-width: 620px;
+            width: 100%;
+            background-color: #fffdf9;
+            padding: 3rem 3rem;
+            border-radius: 6px;
+            box-shadow:
+                0 1px 3px rgba(0,0,0,0.04),
+                0 8px 40px rgba(0,0,0,0.05),
+                0 0 0 1px rgba(0,0,0,0.02);
+            position: relative;
+            background-image:
+                linear-gradient(
+                    to right,
+                    transparent 58px,
+                    rgba(220, 180, 170, 0.15) 58px,
+                    rgba(220, 180, 170, 0.15) 60px,
+                    transparent 60px
+                );
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .moon-phase {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #f5e6d8;
+            position: relative;
+            box-shadow:
+                0 0 30px rgba(200, 160, 120, 0.25),
+                inset 0 0 10px rgba(180, 140, 100, 0.15);
+            margin-bottom: 1.2rem;
+        }
+
+        .moon-phase::after {
+            content: "";
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #fffdf9;
+            top: 4px;
+            right: -14px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: #3a2e2a;
+            margin-bottom: 0.2rem;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #a0897c;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .mantra {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c75b4a;
+            font-family: "Georgia", serif;
+            margin-bottom: 1rem;
+        }
+
+        .ornament {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .ornament span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            margin: 0 5px;
+            opacity: 0.5;
+            vertical-align: middle;
+        }
+
+        .ornament span:nth-child(2) {
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+        }
+
+        .ornament span:nth-child(3) {
+            opacity: 0.4;
+        }
+
+        .back-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(180, 150, 130, 0.4);
+            text-decoration: none;
+            color: #8d6e63;
+            font-size: 1.1rem;
+            transition: all 0.35s ease;
+            margin-bottom: 0.5rem;
+            background: transparent;
+        }
+.back-circle:hover {
+            border-color: #c75b4a;
+            color: #c75b4a;
+            background: rgba(199, 91, 74, 0.04);
+            transform: translateX(-3px);
+        }
+
+        .content-section {
+            text-align: left;
+            padding: 0 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .content-section h2 {
+            font-size: 1.4rem;
+            font-weight: normal;
+            color: #5d4037;
+            margin: 2.5rem 0 1rem 0;
+            padding-left: 1rem;
+            border-left: 3px solid #c75b4a;
+        }
+
+        .content-section h2:first-child {
+            margin-top: 0.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            padding-left: 1rem;
+        }
+
+        .emphasis {
+            color: #c75b4a;
+            font-style: italic;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #fef7f3, #fdf2ec);
+            border: 1px solid rgba(180, 150, 130, 0.2);
+            border-left: 4px solid #d4957b;
+            padding: 1.5rem 1.5rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1.5rem 0 1.5rem 1rem;
+            text-align: left;
+        }
+
+        .info-card strong {
+            display: block;
+            color: #5d4037;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .whisper {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px dotted #e0cfc4;
+            font-size: 0.85rem;
+            color: #a0897c;
+            font-style: italic;
+            text-align: center;
+            line-height: 2;
+        }
+
+        .accent-float {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            opacity: 0.4;
+            margin: 0 3px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+
+        <div class="moon-phase"></div>
+        <h1>Feminine Reality</h1>
+        <div class="tagline">Still the moon, even when hidden</div>
+        <div class="mantra">Lunar, Not Linear</div>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <a href="body.html" class="back-circle" title="Back to Body Basics">←</a>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <div class="content-section">
+
+            <h2>Body Hair</h2>
+
+            <p>
+                Someone probably made you feel ashamed of it. A comment in the changing
+                room. A look from a relative. An advertisement that said "flawless"
+                like hair was a flaw. But body hair is not a mistake your body made.
+                It belongs exactly where it grows.
+            </p>
+
+            <p>
+                <span class="emphasis">Body hair is human.</span> It appears during puberty — often as one
+                of the first signs your body is changing. It is not masculine. It is not
+                unhygienic. It is not a measure of how well you take care of yourself.
+            </p>
+
+            <h2>How Hair Changes During Puberty</h2>
+
+            <p>
+                Before puberty, most body hair is fine, light, and barely noticeable.
+                This is called vellus hair. During puberty, hormones cause some of
+                that hair to become darker, thicker, and more visible — especially
+                on the legs, underarms, and vulva area. This is called terminal hair.
+            </p>
+<p>
+                Hair also begins to appear in places it wasn't before — around the
+                nipples, on the stomach, on the lower back, on the upper lip, between
+                the eyebrows, on the toes. <span class="emphasis">All of these are normal.</span> Your body
+                is not doing something wrong. It's doing what bodies do.
+            </p>
+
+            <h2>Where Hair Grows</h2>
+
+            <p>
+                Legs. Underarms. Arms. Stomach — a fine line from the belly button
+                downward, or scattered hair across the surface. Lower back. Upper lip.
+                Between the eyebrows. Around the nipples — a few dark hairs or fine ones.
+                The vulva — the outer area, including the outer lips and inner thighs.
+                Toes and feet.
+            </p>
+
+            <p>
+                Some women have very little body hair. Some have a lot. Some have dark,
+                thick hair. Some have fine, light hair. The pattern, color, and amount
+                are determined mostly by genetics. <span class="emphasis">There is no correct amount.</span>
+            </p>
+
+            <h2>Hair Is Not Dirt</h2>
+
+            <p>
+                You have probably been told — directly or indirectly — that a hairy
+                body is an unhygienic body. This is not true. Hair is not dirty.
+                Washing your body keeps you clean, whether hair is present or not.
+                Removing hair does not make you cleaner. It makes you hairless.
+                Those are not the same thing.
+            </p>
+
+            <div class="info-card">
+                <strong>🌿 The shaving myth</strong>
+                <p>
+                    Shaving does not make hair grow back thicker or darker. This is
+                    one of the most repeated myths about body hair — and it's not true.
+                    When you shave, you cut the hair at the surface. The blunt tip feels
+                    coarser as it grows in, and it may look darker because it hasn't been
+                    lightened by sun exposure yet. But the hair itself hasn't changed.
+                    You are not making things worse by removing it.
+                </p>
+            </div>
+
+            <h2>Removal Is Your Choice</h2>
+
+            <p>
+                You can shave. You can wax. You can thread. You can use depilatory creams.
+                You can do nothing at all. <span class="emphasis">None of these choices makes you more
+                or less feminine.</span> None makes you more or less clean, more or less
+                beautiful, more or less worthy.
+            </p>
+
+            <p>
+                If you choose to remove hair, irritation and ingrown hairs are common.
+                They are not a sign you're doing it wrong — just a sign your skin is
+                sensitive, which is normal. If you choose to keep your hair, that is
+                not neglect. It is acceptance.
+            </p>
+
+            <p>
+                Comments from others — family, friends, anyone — about your body hair
+                say more about their discomfort than your body. You are allowed to
+                ignore them. You are allowed to set a boundary. You are allowed to
+                make your own choice and let it be final.
+            </p>
+
+        </div>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <p class="whisper">
+            Your body is not a problem to fix.<br>
+            The hair on your skin is not a failure of grooming.<br>
+            It is proof that your body knows how to grow, how to protect, how to be. <span class="accent-float"></span> 🌙
+        </p>
+
+    </div>
+
+</body>
+</html>

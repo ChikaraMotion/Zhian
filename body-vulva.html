@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulva — Feminine Reality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf5f0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(180, 150, 130, 0.03) 2px,
+                    rgba(180, 150, 130, 0.03) 4px
+                );
+            color: #3a2e2a;
+            font-family: "Georgia", "Times New Roman", serif;
+            line-height: 1.8;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 2.5rem;
+        }
+
+        .page {
+            max-width: 620px;
+            width: 100%;
+            background-color: #fffdf9;
+            padding: 3rem 3rem;
+            border-radius: 6px;
+            box-shadow:
+                0 1px 3px rgba(0,0,0,0.04),
+                0 8px 40px rgba(0,0,0,0.05),
+                0 0 0 1px rgba(0,0,0,0.02);
+            position: relative;
+            background-image:
+                linear-gradient(
+                    to right,
+                    transparent 58px,
+                    rgba(220, 180, 170, 0.15) 58px,
+                    rgba(220, 180, 170, 0.15) 60px,
+                    transparent 60px
+                );
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .moon-phase {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #f5e6d8;
+            position: relative;
+            box-shadow:
+                0 0 30px rgba(200, 160, 120, 0.25),
+                inset 0 0 10px rgba(180, 140, 100, 0.15);
+            margin-bottom: 1.2rem;
+        }
+
+        .moon-phase::after {
+            content: "";
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #fffdf9;
+            top: 4px;
+            right: -14px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: #3a2e2a;
+            margin-bottom: 0.2rem;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #a0897c;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .mantra {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c75b4a;
+            font-family: "Georgia", serif;
+            margin-bottom: 1rem;
+        }
+
+        .ornament {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .ornament span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            margin: 0 5px;
+            opacity: 0.5;
+            vertical-align: middle;
+        }
+
+        .ornament span:nth-child(2) {
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+        }
+
+        .ornament span:nth-child(3) {
+            opacity: 0.4;
+        }
+
+        .back-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(180, 150, 130, 0.4);
+            text-decoration: none;
+            color: #8d6e63;
+            font-size: 1.1rem;
+            transition: all 0.35s ease;
+            margin-bottom: 0.5rem;
+            background: transparent;
+        }
+.back-circle:hover {
+            border-color: #c75b4a;
+            color: #c75b4a;
+            background: rgba(199, 91, 74, 0.04);
+            transform: translateX(-3px);
+        }
+
+        .content-section {
+            text-align: left;
+            padding: 0 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .content-section h2 {
+            font-size: 1.4rem;
+            font-weight: normal;
+            color: #5d4037;
+            margin: 2.5rem 0 1rem 0;
+            padding-left: 1rem;
+            border-left: 3px solid #c75b4a;
+        }
+
+        .content-section h2:first-child {
+            margin-top: 0.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            padding-left: 1rem;
+        }
+
+        .emphasis {
+            color: #c75b4a;
+            font-style: italic;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #fef7f3, #fdf2ec);
+            border: 1px solid rgba(180, 150, 130, 0.2);
+            border-left: 4px solid #d4957b;
+            padding: 1.5rem 1.5rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1.5rem 0 1.5rem 1rem;
+            text-align: left;
+        }
+
+        .info-card strong {
+            display: block;
+            color: #5d4037;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        /* Observation card — clickable link card */
+        .observation-card {
+            display: block;
+            text-decoration: none;
+            background: linear-gradient(135deg, #fef7f3, #fdf2ec);
+            border: 1px solid rgba(180, 150, 130, 0.2);
+            border-left: 4px solid #c75b4a;
+            padding: 1.5rem 1.5rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1.5rem 0 1.5rem 1rem;
+            text-align: left;
+            transition: all 0.35s ease;
+            position: relative;
+        }
+
+        .observation-card:hover {
+            background: linear-gradient(135deg, #fdf0e8, #fbe8dc);
+            transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(180, 140, 120, 0.15);
+        }
+
+        .observation-card strong {
+            display: block;
+            color: #5d4037;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.5px;
+        }
+
+        .observation-card .card-hint {
+            display: block;
+            font-size: 0.85rem;
+            color: #a0897c;
+            font-style: italic;
+        }
+
+        .observation-card .card-arrow {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #c75b4a;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .observation-card:hover .card-arrow {
+            opacity: 1;
+        }
+
+        .whisper {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px dotted #e0cfc4;
+            font-size: 0.85rem;
+            color: #a0897c;
+            font-style: italic;
+            text-align: center;
+            line-height: 2;
+        }
+
+        .accent-float {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            opacity: 0.4;
+            margin: 0 3px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+
+        <div class="moon-phase"></div>
+        <h1>Feminine Reality</h1>
+        <div class="tagline">Still the moon, even when hidden</div>
+        <div class="mantra">Lunar, Not Linear</div>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <a href="body.html" class="back-circle" title="Back to Body Basics">←</a>
+<div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <div class="content-section">
+
+            <h2>Vulva</h2>
+
+            <p>
+                You've probably never seen one that looks like yours. Not in a diagram.
+                Not in a textbook. Not anywhere that counts. What you've seen is simplified,
+                airbrushed, or altered — a narrow range presented as the whole picture.
+                <span class="emphasis">Your vulva is not ugly. You just haven't been shown the full range
+                of normal.</span>
+            </p>
+
+            <h2>What the Vulva Is</h2>
+
+            <p>
+                The vulva is the external genital area — everything you can see from the
+                outside. It is not the vagina. The vagina is the internal canal. The vulva
+                is the outer structure — the folds, the openings, the visible parts.
+                Most people use the word "vagina" when they mean "vulva." Now you know
+                the difference.
+            </p>
+
+            <h2>Parts of the Vulva</h2>
+
+            <p>
+                <span class="emphasis">Mons pubis:</span> The soft, fatty area over the pubic bone, above
+                the rest of the vulva. Pubic hair grows here. It cushions the bone.
+            </p>
+
+            <p>
+                <span class="emphasis">Labia majora (outer lips):</span> The outer folds of skin. They may
+                be plump or flat. Hair may grow on them. They may be lighter or darker
+                than the surrounding skin.
+            </p>
+
+            <p>
+                <span class="emphasis">Labia minora (inner lips):</span> The inner folds, inside the outer
+                lips. They can be smooth or textured. They can be shorter than the outer
+                lips or longer and extending past them. <span class="emphasis">Both are common. Both are
+                normal.</span>
+            </p>
+
+            <p>
+                <span class="emphasis">Clitoris:</span> A small, highly sensitive organ located at the top
+                where the inner lips meet. Only the tip — the glans — is visible. The
+                rest extends internally down both sides, much larger than it appears.
+            </p>
+
+            <p>
+                <span class="emphasis">Urethral opening:</span> A small opening below the clitoris where
+                urine exits the body.
+            </p>
+
+            <p>
+                <span class="emphasis">Vaginal opening:</span> Located below the urethral opening. This is
+                where menstrual blood and discharge exit the body.
+            </p>
+
+            <h2>Labia Variety</h2>
+
+            <p>
+                Inner lips can be short and tucked inside the outer lips. They can be
+                long and extend past the outer lips. They can be asymmetrical — one side
+                longer than the other. They can be smooth along the edge or have small
+                folds and ridges. The color can range from pale pink to deep brown, and
+                they are often darker than the surrounding skin.
+            </p>
+
+            <p>
+                Having inner lips that extend past the outer lips is <span class="emphasis">one of the
+                most common shapes.</span> It does not mean you are stretched out, damaged,
+                or abnormal. It means you have a vulva — one of millions of variations,
+                all normal.
+            </p>
+
+            <h2>The Clitoris</h2>
+
+            <p>
+                Most of the clitoris is internal. It extends down both sides of the
+                vulva in a wishbone shape, with erectile tissue that fills with blood.
+                The visible tip — the glans — is covered by a small hood of skin where
+                the inner lips meet at the top. The clitoris has thousands of nerve
+                endings. Its only purpose is sensation.
+            </p>
+
+            <h2>How It Changes</h2>
+<p>
+                During puberty, the vulva changes. Hair grows on the mons pubis and
+                outer lips. The labia may grow and change shape. Color may darken —
+                this is normal pigmentation, not a sign of anything wrong. The vulva
+                continues to change with age, hormones, and life stages. It is not
+                supposed to look the same at 15 as it does at 25 or 45.
+            </p>
+
+            <!-- Observation Card -->
+            <a href="body-vulva-observation.html" class="observation-card">
+                <strong>👀 Vulva Observation</strong>
+                <span class="card-hint">A gentle guide to looking at your own body</span>
+                <span class="card-arrow">→</span>
+            </a>
+
+        </div>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <p class="whisper">
+            Your vulva is not a secret to keep.<br>
+            It is not ugly. It is not dirty. It is not wrong.<br>
+            It is a body part — like your hand, like your ear, like your nose. And it belongs to you. <span class="accent-float"></span> 🌙
+        </p>
+
+    </div>
+
+</body>
+</html>

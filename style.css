@@ -1,0 +1,204 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:#1a120b;
+  color:white;
+}
+
+/* Navbar */
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:20px 50px;
+
+  background:#3c2a21;
+}
+
+.logo{
+  color:#e5ba73;
+}
+
+.nav-links{
+  display:flex;
+  list-style:none;
+  gap:20px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:white;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:#e5ba73;
+}
+
+/* Hero */
+
+.hero{
+  text-align:center;
+  padding:100px 20px;
+}
+
+.hero h2{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:18px;
+  max-width:600px;
+  margin:auto;
+  margin-bottom:30px;
+  line-height:1.6;
+}
+
+.hero button{
+  padding:12px 24px;
+  border:none;
+  border-radius:8px;
+
+  background:#e5ba73;
+  color:black;
+
+  font-size:16px;
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.hero button:hover{
+  background:white;
+}
+
+/* Songs */
+
+.songs{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+
+  padding:50px;
+  flex-wrap:wrap;
+}
+
+.song-card{
+  background:#3c2a21;
+
+  width:300px;
+
+  padding:20px;
+  border-radius:15px;
+
+  transition:0.3s;
+}
+
+.song-card:hover{
+  transform:translateY(-10px);
+}
+
+.song-card h3{
+  margin-bottom:10px;
+  color:#e5ba73;
+}
+
+.song-card p{
+  margin-bottom:15px;
+}
+
+.song-card pre{
+  font-size:18px;
+  line-height:1.8;
+}
+/* Responsive Design */
+
+@media (max-width: 768px){
+
+  .navbar{
+    flex-direction:column;
+    gap:15px;
+    padding:20px;
+  }
+
+  .nav-links{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .hero{
+    padding:60px 20px;
+  }
+
+  .hero h2{
+    font-size:32px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .songs{
+    padding:20px;
+  }
+
+  .song-card{
+    width:100%;
+    max-width:350px;
+  }
+
+}
+.kalimba{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.kalimba h2{
+  margin-bottom:40px;
+  font-size:32px;
+}
+
+.keys{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+}
+
+.key{
+  width:60px;
+  height:180px;
+
+  background:#e5ba73;
+
+  border-radius:10px;
+
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+
+  padding-bottom:15px;
+
+  font-weight:bold;
+  font-size:18px;
+
+  cursor:pointer;
+
+  transition:0.2s;
+}
+
+.key:hover{
+  transform:translateY(5px);
+  background:#f3d9a2;
+}
+.controls{
+  margin-bottom:30px;
+  color:#ddd;
+}

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Basics — Feminine Reality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf5f0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(180, 150, 130, 0.03) 2px,
+                    rgba(180, 150, 130, 0.03) 4px
+                );
+            color: #3a2e2a;
+            font-family: "Georgia", "Times New Roman", serif;
+            line-height: 1.8;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 620px;
+            width: 100%;
+            background-color: #fffdf9;
+            padding: 3rem 3rem;
+            border-radius: 6px;
+            box-shadow:
+                0 1px 3px rgba(0,0,0,0.04),
+                0 8px 40px rgba(0,0,0,0.05),
+                0 0 0 1px rgba(0,0,0,0.02);
+            position: relative;
+            background-image:
+                linear-gradient(
+                    to right,
+                    transparent 58px,
+                    rgba(220, 180, 170, 0.15) 58px,
+                    rgba(220, 180, 170, 0.15) 60px,
+                    transparent 60px
+                );
+            text-align: center;
+        }
+
+        /* ── Moon Phase ── */
+        .moon-phase {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #f5e6d8;
+            position: relative;
+            box-shadow:
+                0 0 30px rgba(200, 160, 120, 0.25),
+                inset 0 0 10px rgba(180, 140, 100, 0.15);
+            margin-bottom: 1.2rem;
+        }
+
+        .moon-phase::after {
+            content: "";
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #fffdf9;
+            top: 4px;
+            right: -14px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: #3a2e2a;
+            margin-bottom: 0.2rem;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #a0897c;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .mantra {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c75b4a;
+            font-family: "Georgia", serif;
+            margin-bottom: 1rem;
+        }
+
+        /* ── Ornament ── */
+        .ornament {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .ornament span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            margin: 0 5px;
+            opacity: 0.5;
+            vertical-align: middle;
+        }
+
+        .ornament span:nth-child(2) {
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+        }
+
+        .ornament span:nth-child(3) {
+            opacity: 0.4;
+        }
+
+        /* ── Main Navigation Cards ── */
+        .nav-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1rem 0 2rem 0;
+            padding: 0 1rem;
+        }
+
+        .nav-card {
+            display: block;
+            text-decoration: none;
+color: #3a2e2a;
+            background: linear-gradient(135deg, #fef7f3, #fdf2ec);
+            border: 1px solid rgba(180, 150, 130, 0.2);
+            border-left: 4px solid #d4957b;
+            padding: 1.2rem 1.5rem;
+            border-radius: 0 6px 6px 0;
+            text-align: left;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card:hover {
+            background: linear-gradient(135deg, #fdf0e8, #fbe8dc);
+            border-left-color: #c75b4a;
+            transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(180, 140, 120, 0.15);
+        }
+
+        .nav-card .card-title {
+            display: block;
+            font-size: 1.1rem;
+            color: #5d4037;
+            margin-bottom: 0.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-card .card-hint {
+            display: block;
+            font-size: 0.8rem;
+            color: #a0897c;
+            font-style: italic;
+        }
+
+        .nav-card .card-arrow {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #c75b4a;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .nav-card:hover .card-arrow {
+            opacity: 1;
+        }
+
+        .nav-card.active {
+            border-left-color: #c75b4a;
+            background: linear-gradient(135deg, #fdf0e8, #fce8dc);
+            cursor: default;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .nav-card.active:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .nav-card.active .card-arrow {
+            opacity: 0;
+        }
+
+        /* ── Section Label ── */
+        .section-label {
+            text-align: left;
+            padding: 0 1rem;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #c75b4a;
+            margin-bottom: 0.8rem;
+        }
+
+        /* ── Intro Paragraph ── */
+        .intro {
+            text-align: left;
+            padding: 0 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            color: #3a2e2a;
+            line-height: 1.9;
+        }
+
+        /* ── Topic Cards (sub-navigation) ── */
+        .topic-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            padding: 0 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .topic-card {
+            display: block;
+            text-decoration: none;
+            color: #3a2e2a;
+            background: linear-gradient(135deg, #fef7f3, #fdf2ec);
+            border: 1px solid rgba(180, 150, 130, 0.2);
+            border-left: 4px solid #d4957b;
+            padding: 0.9rem 1.5rem;
+            border-radius: 0 6px 6px 0;
+            text-align: left;
+            transition: all 0.35s ease;
+            position: relative;
+        }
+
+        .topic-card:hover {
+            background: linear-gradient(135deg, #fdf0e8, #fbe8dc);
+            border-left-color: #c75b4a;
+            transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(180, 140, 120, 0.15);
+        }
+
+        .topic-card .topic-title {
+            display: block;
+            font-size: 1rem;
+            color: #5d4037;
+            letter-spacing: 0.5px;
+        }
+
+        .topic-card .topic-arrow {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #c75b4a;
+            font-size: 1.1rem;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .topic-card:hover .topic-arrow {
+            opacity: 1;
+        }
+/* ── Whisper Footer ── */
+        .whisper {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px dotted #e0cfc4;
+            font-size: 0.85rem;
+            color: #a0897c;
+            font-style: italic;
+            text-align: center;
+            line-height: 2;
+        }
+
+        .accent-float {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            opacity: 0.4;
+            margin: 0 3px;
+            vertical-align: middle;
+        }
+
+        .emphasis {
+            color: #c75b4a;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+
+        <!-- ── Header ── -->
+        <div class="moon-phase"></div>
+        <h1>Feminine Reality</h1>
+        <div class="tagline">Still the moon, even when hidden</div>
+        <div class="mantra">Lunar, Not Linear</div>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <!-- ── Main Navigation ── -->
+        <div class="nav-cards">
+            <a href="fr.html" class="nav-card">
+                <span class="card-title">🌙 Home</span>
+                <span class="card-hint">Where the quiet begins</span>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="periods.html" class="nav-card">
+                <span class="card-title">🩸 Periods</span>
+                <span class="card-hint">Cramps, cycles, what's normal</span>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="body.html" class="nav-card active">
+                <span class="card-title">🤍 Body Basics</span>
+                <span class="card-hint">You are here</span>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="rest.html" class="nav-card">
+                <span class="card-title">🌙 Rest</span>
+                <span class="card-hint">Permission to pause</span>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="letters.html" class="nav-card">
+                <span class="card-title">✉️ Dear You</span>
+                <span class="card-hint">Letters from the author</span>
+                <span class="card-arrow">→</span>
+            </a>
+        </div>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <!-- ── Section Label ── -->
+        <p class="section-label">Body Basics</p>
+
+        <!-- ── Intro ── -->
+        <p class="intro">
+            Puberty is not one event. It's years of change — a slow unfolding.
+            Hair appears where there was none. Skin behaves differently.
+            Shapes shift. Smells change. Feelings arrive without warning.
+            All of this is the body learning its adult form. None of it is wrong.
+            Below are the things most girls wonder about but rarely get to ask.
+            <span class="emphasis">Each one is a door. Open the one you need.</span>
+        </p>
+
+        <!-- ── Topic Cards ── -->
+        <div class="topic-cards">
+            <a href="body-breasts.html" class="topic-card">
+                <span class="topic-title">🤍 Breasts</span>
+                <span class="topic-arrow">→</span>
+            </a>
+            <a href="body-discharge.html" class="topic-card">
+                <span class="topic-title">💧 Discharge</span>
+                <span class="topic-arrow">→</span>
+            </a>
+            <a href="body-hormones.html" class="topic-card">
+                <span class="topic-title">🌊 Hormones</span>
+                <span class="topic-arrow">→</span>
+            </a>
+            <a href="body-hair.html" class="topic-card">
+<span class="topic-title">🌿 Body Hair</span>
+                <span class="topic-arrow">→</span>
+            </a>
+            <a href="body-sweat.html" class="topic-card">
+                <span class="topic-title">🌬️ Sweat &amp; Odor</span>
+                <span class="topic-arrow">→</span>
+            </a>
+            <a href="body-vulva.html" class="topic-card">
+                <span class="topic-title">🦋 Vulva </span>
+                <span class="topic-arrow">→</span>
+            </a>
+            <a href="body-skin.html" class="topic-card">
+                <span class="topic-title">✨ Skin Changes</span>
+                <span class="topic-arrow">→</span>
+            </a>
+            <a href="body-weight.html" class="topic-card">
+                <span class="topic-title">⚖️ Weight Fluctuations</span>
+                <span class="topic-arrow">→</span>
+            </a>
+            <a href="body-hunger.html" class="topic-card">
+                <span class="topic-title">🍂 Hunger &amp; Cravings</span>
+                <span class="topic-arrow">→</span>
+            </a>
+        </div>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <!-- ── Whisper ── -->
+        <p class="whisper">
+            Your body is not a problem to solve.<br>
+            It is not a machine. It is not an object. It is not a project.<br>
+            It is a living, changing, knowing thing — and it belongs to you. <span class="accent-float"></span> 🌙
+        </p>
+
+    </div>
+
+</body>
+</html>

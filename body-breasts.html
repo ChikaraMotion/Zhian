@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breasts — Feminine Reality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf5f0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(180, 150, 130, 0.03) 2px,
+                    rgba(180, 150, 130, 0.03) 4px
+                );
+            color: #3a2e2a;
+            font-family: "Georgia", "Times New Roman", serif;
+            line-height: 1.8;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 2.5rem;
+        }
+
+        .page {
+            max-width: 620px;
+            width: 100%;
+            background-color: #fffdf9;
+            padding: 3rem 3rem;
+            border-radius: 6px;
+            box-shadow:
+                0 1px 3px rgba(0,0,0,0.04),
+                0 8px 40px rgba(0,0,0,0.05),
+                0 0 0 1px rgba(0,0,0,0.02);
+            position: relative;
+            background-image:
+                linear-gradient(
+                    to right,
+                    transparent 58px,
+                    rgba(220, 180, 170, 0.15) 58px,
+                    rgba(220, 180, 170, 0.15) 60px,
+                    transparent 60px
+                );
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* ── Moon Phase ── */
+        .moon-phase {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #f5e6d8;
+            position: relative;
+            box-shadow:
+                0 0 30px rgba(200, 160, 120, 0.25),
+                inset 0 0 10px rgba(180, 140, 100, 0.15);
+            margin-bottom: 1.2rem;
+        }
+
+        .moon-phase::after {
+            content: "";
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #fffdf9;
+            top: 4px;
+            right: -14px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: #3a2e2a;
+            margin-bottom: 0.2rem;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #a0897c;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .mantra {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c75b4a;
+            font-family: "Georgia", serif;
+            margin-bottom: 1rem;
+        }
+
+        /* ── Ornament ── */
+        .ornament {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .ornament span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            margin: 0 5px;
+            opacity: 0.5;
+            vertical-align: middle;
+        }
+
+        .ornament span:nth-child(2) {
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+        }
+
+        .ornament span:nth-child(3) {
+            opacity: 0.4;
+        }
+
+        /* ── Circle Back Button ── */
+        .back-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(180, 150, 130, 0.4);
+            text-decoration: none;
+            color: #8d6e63;
+            font-size: 1.1rem;
+            transition: all 0.35s ease;
+            margin-bottom: 0.5rem;
+            background: transparent;
+        }
+
+
+            <div class="info-card">
+.back-circle:hover {
+            border-color: #c75b4a;
+            color: #c75b4a;
+            background: rgba(199, 91, 74, 0.04);
+            transform: translateX(-3px);
+        }
+
+        /* ── Content Section ── */
+        .content-section {
+            text-align: left;
+            padding: 0 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .content-section h2 {
+            font-size: 1.4rem;
+            font-weight: normal;
+            color: #5d4037;
+            margin: 2.5rem 0 1rem 0;
+            padding-left: 1rem;
+            border-left: 3px solid #c75b4a;
+        }
+
+        .content-section h2:first-child {
+            margin-top: 0.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            padding-left: 1rem;
+        }
+
+        .emphasis {
+            color: #c75b4a;
+            font-style: italic;
+        }
+
+        /* ── Info Card ── */
+        .info-card {
+            background: linear-gradient(135deg, #fef7f3, #fdf2ec);
+            border: 1px solid rgba(180, 150, 130, 0.2);
+            border-left: 4px solid #d4957b;
+            padding: 1.5rem 1.5rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1.5rem 0 1.5rem 1rem;
+            text-align: left;
+        }
+
+        .info-card strong {
+            display: block;
+            color: #5d4037;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        /* ── Whisper Footer ── */
+        .whisper {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px dotted #e0cfc4;
+            font-size: 0.85rem;
+            color: #a0897c;
+            font-style: italic;
+            text-align: center;
+            line-height: 2;
+        }
+
+        .accent-float {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            opacity: 0.4;
+            margin: 0 3px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+
+        <!-- ── Header ── -->
+        <div class="moon-phase"></div>
+        <h1>Feminine Reality</h1>
+        <div class="tagline">Still the moon, even when hidden</div>
+        <div class="mantra">Lunar, Not Linear</div>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <!-- ── Back ── -->
+        <a href="body.html" class="back-circle" title="Back to Body Basics">←</a>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <!-- ── Content ── -->
+        <div class="content-section">
+
+            <h2>Breasts</h2>
+
+            <p>
+                Someone probably told you they're too small. Too different. Not enough.
+                Maybe it was a relative, a comment thrown across the room like it meant nothing.
+                Maybe it was a classmate. Maybe it was your own mind after comparing yourself
+                to images that were never real to begin with.
+            </p>
+
+            <p>
+                <span class="emphasis">Your breasts are not a problem to fix.</span>
+                They are living, changing tissue. They are yours. And whatever size
+                they are — that size is normal.
+            </p>
+
+            <h2>How They Grow</h2>
+
+            <p>
+                Breast growth usually begins between ages 8 and 14 — but earlier is normal,
+                and later is normal. It starts with a small, sometimes tender lump under the
+                nipple called a breast bud. This is the first sign. Tenderness is not illness.
+                It's development.
+            </p>
+<strong>🤍 When to check with a doctor</strong>
+                <p>
+                    A lump that doesn't change with your cycle. Nipple discharge that
+                    is bloody or happens without squeezing. Persistent pain not linked
+                    to your period. Skin changes such as dimpling, redness, thickening,
+                    or a rash that won't heal. These are not emergencies to panic about —
+                    but they are reasons to get checked. Most breast concerns turn out
+                    to be benign. But you deserve to know for sure.
+                </p>
+<p>
+                One side almost always grows faster than the other. Sometimes the difference
+                is slight. Sometimes it's noticeable. Sometimes it evens out over time.
+                Sometimes it doesn't. <span class="emphasis">Asymmetry is not a defect.</span> Most women have it.
+            </p>
+
+            <p>
+                Growth continues slowly over years — not weeks. Stretch marks can appear
+                as the skin stretches. They fade from red to silver. They are growth lines,
+                not damage.
+            </p>
+
+            <h2>How They Change With Your Cycle</h2>
+
+            <p>
+                In the days before your period, rising hormones cause breast tissue to swell
+                and retain fluid. They may feel fuller, heavier, tender, even lumpy.
+                After your period begins, they soften again. This monthly rhythm is not a
+                symptom of something wrong — <span class="emphasis">it's your body keeping time.</span>
+            </p>
+
+            <h2>Areola &amp; Nipples</h2>
+
+            <p>
+                The areola is the darker circle of skin around the nipple. It comes in
+                many colors — pale pink, soft brown, deep brown, nearly black. Color can
+                change with hormones, especially during puberty and pregnancy. It can
+                darken before your period and lighten again after. All of this is normal.
+            </p>
+
+            <p>
+                Areola size varies widely. Some are small and tight. Some are wide
+                and cover a large part of the breast. There is no "correct" proportion
+                between areola and breast size.
+            </p>
+
+            <p>
+                Many areolas have small raised bumps on the surface. These are Montgomery
+                glands — tiny oil-producing glands that keep the skin protected and
+                moisturized. <span class="emphasis">They are not pimples. Do not squeeze them.</span>
+                Some women have a few. Some have many. Some have none that are visible.
+                All are normal.
+            </p>
+
+            <p>
+                Nipples themselves vary. They can be protruding, flat, or inverted
+                (pointing inward). All three are normal variations, not deformities.
+                Some nipples become erect with cold or touch. Some don't. Both are normal.
+                Hair around the nipple — a few fine hairs or darker ones — is also normal.
+                You can leave it or remove it. It's your body.
+            </p>
+
+            <h2>About Size</h2>
+
+            <p>
+                Breast size is determined mostly by genetics — like height or eye color.
+                Weight changes, hormones, and life stages like pregnancy and breastfeeding
+                can shift size temporarily or permanently. But you cannot force them to
+                grow or shrink through exercise, creams, or supplements.
+            </p>
+
+            <p>
+               * Small breasts are complete.*</span>
+            </p>
+
+            <p>
+                Comments from others about your size — whether criticism, teasing, or
+                "advice" about surgery — say more about their discomfort than your body.
+                You are allowed to set boundaries. You are allowed to say nothing.
+                You are allowed to walk away knowing they were wrong.
+            </p>
+            </div>
+
+        </div>
+
+        <div class="ornament">
+            <span></span><span></span><span></span>
+        </div>
+
+        <!-- ── Whisper ── -->
+        <p class="whisper">
+            You are not incomplete.<br>
+            You never were. You were just never told.<br>
+            Now you know. <span class="accent-float"></span> 🌙
+        </p>
+
+    </div>
+
+</body>
+</html>

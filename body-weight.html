@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Fluctuations — Feminine Reality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf5f0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(180, 150, 130, 0.03) 2px,
+                    rgba(180, 150, 130, 0.03) 4px
+                );
+            color: #3a2e2a;
+            font-family: "Georgia", "Times New Roman", serif;
+            line-height: 1.8;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .page {
+            max-width: 620px;
+            width: 100%;
+            background-color: #fffdf9;
+            padding: 2.5rem 2rem;
+            border-radius: 6px;
+            box-shadow:
+                0 1px 3px rgba(0,0,0,0.04),
+                0 8px 40px rgba(0,0,0,0.05),
+                0 0 0 1px rgba(0,0,0,0.02);
+            position: relative;
+            background-image:
+                linear-gradient(
+                    to right,
+                    transparent 58px,
+                    rgba(220, 180, 170, 0.12) 58px,
+                    rgba(220, 180, 170, 0.12) 60px,
+                    transparent 60px
+                );
+            text-align: center;
+        }
+
+        .moon-phase {
+            display: inline-block;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #f5e6d8;
+            position: relative;
+            box-shadow: 0 0 20px rgba(200, 160, 120, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .moon-phase::after {
+            content: "";
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #fffdf9;
+            top: 4px;
+            right: -12px;
+        }
+
+        h1 {
+            font-size: 2.1rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: #3a2e2a;
+            margin-bottom: 0.2rem;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #a0897c;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .mantra {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c75b4a;
+            font-family: "Georgia", serif;
+            margin-bottom: 0.8rem;
+        }
+
+        .ornament {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .ornament span {
+            display: inline-block;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            opacity: 0.5;
+            vertical-align: middle;
+        }
+
+        /* First dot: small */
+        .ornament span:first-child {
+            width: 5px;
+            height: 5px;
+            opacity: 0.4;
+        }
+
+        /* Middle dot: larger and darker */
+        .ornament span:nth-child(2) {
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+            margin: 0 6px;
+        }
+
+        /* Third dot: small */
+        .ornament span:last-child {
+            width: 5px;
+            height: 5px;
+            opacity: 0.4;
+        }
+
+        .back-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(180, 150, 130, 0.4);
+            text-decoration: none;
+            color: #8d6e63;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: transparent;
+            margin: 0.2rem 0;
+        }
+
+        .back-ci
+rcle:hover {
+            border-color: #c75b4a;
+            color: #c75b4a;
+            background: rgba(199, 91, 74, 0.04);
+            transform: translateX(-3px);
+        }
+
+        .content {
+            text-align: left;
+            margin: 1rem 0;
+        }
+
+        .content h2 {
+            font-size: 1.4rem;
+            font-weight: normal;
+            color: #5d4037;
+            margin: 2rem 0 1rem 0;
+            padding-left: 0.8rem;
+            border-left: 3px solid #c75b4a;
+        }
+
+        .content h2:first-of-type {
+            margin-top: 0.2rem;
+        }
+
+        .content h3 {
+            font-size: 1.15rem;
+            font-weight: normal;
+            color: #7b5e54;
+            margin: 1.2rem 0 0.5rem 0;
+            padding-left: 0.8rem;
+            font-style: italic;
+        }
+
+        .content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            padding-left: 0.8rem;
+        }
+
+        .emphasis {
+            color: #c75b4a;
+            font-style: italic;
+        }
+
+        .gentle-list {
+            list-style: none;
+            margin: 0.5rem 0 1rem 1.8rem;
+        }
+
+        .gentle-list li {
+            margin-bottom: 0.6rem;
+            font-size: 0.98rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .gentle-list li::before {
+            content: "•";
+            color: #c75b4a;
+            position: absolute;
+            left: 0;
+            opacity: 0.7;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #fef7f3, #fdf2ec);
+            border: 1px solid rgba(180, 150, 130, 0.2);
+            border-left: 4px solid #d4957b;
+            padding: 1.2rem 1.3rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0 1.5rem 0.8rem;
+        }
+
+        .info-card p {
+            margin-bottom: 0;
+            padding-left: 0;
+            font-size: 0.95rem;
+        }
+
+        .info-card strong {
+            display: block;
+            color: #5d4037;
+            margin-bottom: 0.3rem;
+        }
+
+        .whisper {
+            margin-top: 1rem;
+            padding-top: 1.2rem;
+            border-top: 1px dotted #e0cfc4;
+            font-size: 0.85rem;
+            color: #a0897c;
+            font-style: italic;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .accent-dot {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            opacity: 0.4;
+            margin: 0 3px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 550px) {
+            .page {
+                padding: 1.8rem 1.2rem;
+            }
+            .content p, .content h2, .content h3 {
+                padding-left: 0.3rem;
+            }
+            .gentle-list {
+                margin-left: 0.8rem;
+            }
+            .info-card {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <div class="moon-phase"></div>
+    <h1>Feminine Reality</h1>
+    <div class="tagline">Still the moon, even when hidden</div>
+    <div class="mantra">Lunar, Not Linear</div>
+
+    <div class="ornament">
+        <span></span><span></span><span></span>
+    </div>
+
+    <a href="body.html" class="back-circle" title="Back to Body Basics">←</a>
+
+    <div class="ornament">
+        <span></span><span></span><span></span>
+    </div>
+
+    <div class="content">
+
+        <h2>Weight Fluctuations</h2>
+
+        <p>
+            Your weight changes before you understand why. One week your jeans fit. The next week they feel tighter — even though you ate the same, moved the same. 
+            <span class="emphasis">This is not failure. This is being female.</span>
+        </p>
+
+        <h3>Monthly cycle — water retention</h3>
+        <p>
+            In the second half of your cycle (after ovulation), progesterone rises. It causes your body to hold onto more water. 
+            You can gain 2–5 pounds of water in just a few days. Your breasts may
+feel fuller. Your belly may feel bloated. 
+            Then your period arrives, and the water leaves. <span class="emphasis">This is not fat. It's tide.</span>
+        </p>
+
+        <h3>Puberty — growing out, then up</h3>
+        <p>
+            Your body is not growing in a straight line. It grows out, then up, then out again. Hips widen. Breasts develop. 
+            The number on the scale goes up because bones and tissue are building — not because you're doing anything wrong. 
+            Weight gain during puberty is necessary. It's not a problem to fix.
+        </p>
+
+        <h3>Carbohydrates and salt</h3>
+        <p>
+            Eating pasta, rice, bread, or salty food pulls water into your tissues. The scale jumps the next morning. 
+            By the next day (or two days later), it's gone. <span class="emphasis">This is not real weight gain.</span> It's just water saying hello.
+        </p>
+
+        <h3>Constipation</h3>
+        <p>
+            Hormones slow down digestion before your period. Waste stays in your body longer. The scale shows that extra weight. 
+            When things move again, the number drops. Nothing is broken. Your digestive system is just responding to the same monthly rhythm.
+        </p>
+
+        <div class="info-card">
+            <strong>🌙 A quiet note</strong>
+            <p>The scale does not know the difference between water, muscle, bone, food, waste, or the phase of your cycle. It only knows gravity. You are not required to believe everything it tells you.</p>
+        </div>
+
+        <h2>What helps (gentle, not medical advice)</h2>
+        <ul class="gentle-list">
+            <li><span class="emphasis">Stop weighing daily if it hurts you.</span> Once a week, or once a month, tells you more about your real pattern.</li>
+            <li>Notice where you are in your cycle before you believe the number.</li>
+            <li>Drink water — it actually helps your body release retained water.</li>
+            <li>If your clothes feel tight before your period, wear something stretchy or loose. That is not giving up. That is being kind to a body that is working hard.</li>
+        </ul>
+
+        <p>
+            If weight changes feel extreme, rapid, or come with exhaustion, hair loss, feeling cold all the time, or a loss of your period — that's worth mentioning to a doctor. 
+            Otherwise, most daily and weekly shifts are just your body breathing.
+        </p>
+
+        <div class="ornament" style="margin: 1.8rem 0 0.8rem;">
+            <span></span><span></span><span></span>
+        </div>
+
+        <p style="font-style: italic; text-align: center; color: #a0897c; font-size: 0.9rem; padding-left: 0;">
+            Your body is not a betrayal. The number on the scale is not a grade.<br>
+            It moves like the moon moves — not because you failed, but because bodies with ovaries and uteruses<br>
+            were never meant to be still. 🌙
+        </p>
+
+    </div>
+
+    <div class="ornament">
+        <span></span><span></span><span></span>
+    </div>
+
+</div>
+
+</body>
+</html>

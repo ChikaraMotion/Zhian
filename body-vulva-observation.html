@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulva Observation — Feminine Reality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf5f0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(180, 150, 130, 0.03) 2px,
+                    rgba(180, 150, 130, 0.03) 4px
+                );
+            color: #3a2e2a;
+            font-family: "Georgia", "Times New Roman", serif;
+            line-height: 1.75;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .page {
+            max-width: 620px;
+            width: 100%;
+            background-color: #fffdf9;
+            padding: 2.5rem 2rem;
+            border-radius: 6px;
+            box-shadow:
+                0 1px 3px rgba(0,0,0,0.04),
+                0 8px 40px rgba(0,0,0,0.05),
+                0 0 0 1px rgba(0,0,0,0.02);
+            position: relative;
+            background-image:
+                linear-gradient(
+                    to right,
+                    transparent 58px,
+                    rgba(220, 180, 170, 0.12) 58px,
+                    rgba(220, 180, 170, 0.12) 60px,
+                    transparent 60px
+                );
+            text-align: center;
+        }
+
+        .moon-phase {
+            display: inline-block;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #f5e6d8;
+            position: relative;
+            box-shadow: 0 0 20px rgba(200, 160, 120, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .moon-phase::after {
+            content: "";
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #fffdf9;
+            top: 4px;
+            right: -12px;
+        }
+
+        h1 {
+            font-size: 2.1rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: #3a2e2a;
+            margin-bottom: 0.2rem;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #a0897c;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .mantra {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c75b4a;
+            font-family: "Georgia", serif;
+            margin-bottom: 0.8rem;
+        }
+
+        .ornament {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .ornament span {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            margin: 0 4px;
+            opacity: 0.5;
+        }
+
+        .back-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(180, 150, 130, 0.4);
+            text-decoration: none;
+            color: #8d6e63;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: transparent;
+            margin: 0.2rem 0;
+        }
+
+        .back-circle:hover {
+            border-color: #c75b4a;
+            color: #c75b4a;
+            background: rgba(199, 91, 74, 0.04);
+            transform: translateX(-3px);
+        }
+
+        .content {
+            text-align: left;
+            margin: 1rem 0;
+        }
+
+        .content h2 {
+            font-size: 1.3rem;
+            font-weight:
+normal;
+            color: #5d4037;
+            margin: 2rem 0 0.8rem 0;
+            padding-left: 0.8rem;
+            border-left: 3px solid #c75b4a;
+        }
+
+        .content h2:first-of-type {
+            margin-top: 0.2rem;
+        }
+
+        .content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            padding-left: 0.8rem;
+        }
+
+        .emphasis {
+            color: #c75b4a;
+            font-style: italic;
+        }
+
+        .gentle-list {
+            list-style: none;
+            margin: 0.8rem 0 1rem 1.5rem;
+        }
+
+        .gentle-list li {
+            margin-bottom: 0.6rem;
+            font-size: 0.98rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .gentle-list li::before {
+            content: "•";
+            color: #c75b4a;
+            position: absolute;
+            left: 0;
+            opacity: 0.7;
+        }
+
+        .position-box {
+            background: #fef7f2;
+            border-left: 3px solid #d4957b;
+            padding: 1rem 1rem 1rem 1.2rem;
+            margin: 1rem 0 1rem 0.5rem;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .position-title {
+            font-weight: 600;
+            color: #5d4037;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .soft-hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e0cfc4, transparent);
+            margin: 1.8rem 0;
+        }
+
+        .whisper {
+            margin-top: 1rem;
+            padding-top: 1.2rem;
+            border-top: 1px dotted #e0cfc4;
+            font-size: 0.85rem;
+            color: #a0897c;
+            font-style: italic;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .accent-dot {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            background-color: #c75b4a;
+            border-radius: 50%;
+            opacity: 0.4;
+            margin: 0 3px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 550px) {
+            .page {
+                padding: 1.8rem 1.2rem;
+            }
+            .content p, .content h2 {
+                padding-left: 0.3rem;
+            }
+            .gentle-list {
+                margin-left: 0.8rem;
+            }
+            .position-box {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <div class="moon-phase"></div>
+    <h1>Feminine Reality</h1>
+    <div class="tagline">Still the moon, even when hidden</div>
+    <div class="mantra">Lunar, Not Linear</div>
+
+    <div class="ornament">
+        <span></span><span></span><span></span>
+    </div>
+
+    <a href="body-vulva.html" class="back-circle" title="Back to Vulva page">←</a>
+
+    <div class="ornament">
+        <span></span><span></span><span></span>
+    </div>
+
+    <div class="content">
+
+        <h2>Vulva observation</h2>
+        <p>
+            Maybe you're just curious. You've never looked, and you want to know.<br>
+            Maybe you've felt something different — a bump, a change — and you want to check.<br>
+            Maybe someone said something that made you wonder if you're normal.<br>
+            Maybe you're preparing for a doctor's visit.<br>
+            <span class="emphasis">Whatever brought you here: it's valid.</span>
+        </p>
+
+        <h2>An invitation, not an assignment</h2>
+        <p>
+            There is no pressure. You don't have to do this today, or ever. This page is not a to-do list.
+            If you feel nervous, that's normal. Read it once, put it aside, come back another day.
+            No deadline. No wrong way to be here.
+        </p>
+
+        <h2>What you'll need</h2>
+        <ul class="gentle-list">
+            <li>A small hand mirror (clean).</li>
+            <li>Soft, warm light — daylight or a lamp.</li>
+            <li>A quiet place where you feel safe.</li>
+        </ul>
+
+        <h2>One position — sitting on a chair</h2>
+        <div class="position-box">
+<div class="position-title">🪑 Sitting on the edge of a chair</div>
+            <p>Sit on a chair — a dining chair, a desk chair, anything firm. Scoot forward so your bottom is near the front edge of the seat. Let your knees fall open, feet flat on the floor or your toes touching. Place a small mirror on the floor between your feet, tilted slightly up toward you. Lean back just a little. Look down into the mirror. Adjust the mirror or your legs until you can see.</p>
+            <p style="margin-top: 0.5rem; font-style: italic; color: #8d6e63;">That's it. No contortions. No pressure.</p>
+        </div>
+
+        <h2>What to notice (without judgment)</h2>
+        <ul class="gentle-list">
+            <li><span class="emphasis">Outer lips:</span> Texture, color, hair — just notice.</li>
+            <li><span class="emphasis">Inner lips:</span> Tucked or extended? Symmetrical or not? Both are common.</li>
+            <li><span class="emphasis">Clitoris:</span> The small nub at the top where the inner lips meet.</li>
+            <li><span class="emphasis">Color and markings:</span> Darker areas, lighter streaks — that's anatomy, not a flaw.</li>
+        </ul>
+
+        <div style="background: #fef7f2; border-left: 3px solid #c75b4a; padding: 0.8rem 1rem; margin: 1rem 0 1rem 0.5rem; border-radius: 0 6px 6px 0;">
+            <p style="margin: 0; font-size: 0.9rem;">✨ Most vulvas are not perfectly symmetrical. One inner lip longer than the other is extremely common. Your body is not a blueprint — it's a landscape.</p>
+        </div>
+
+        <h2>What you might feel</h2>
+        <p>
+            Some people feel calm or curious. Others feel shy, awkward, or even sad. All of that belongs here.
+            If you feel embarrassed, take a breath. You are undoing years of not being shown. That's not your fault.
+        </p>
+
+        <h2>Afterward</h2>
+        <p>
+            Set the mirror down. Breathe. Put your hand over your heart. Say (inside or out loud):<br>
+            <span class="emphasis">"This body is mine. It doesn't have to look like anyone else's."</span>
+        </p>
+        <p>No homework. No quiz. Drink water, rest, or go back to your day. Nothing is broken.</p>
+
+        <div class="soft-hr"></div>
+
+        <p style="font-style: italic; text-align: center; color: #a0897c; font-size: 0.9rem;">
+            You were never meant to be a mystery to yourself.<br>
+            Looking is not shameful — it's how you learn the geography of your own home.<br>
+            And now you know a little more. That's enough. 🌙
+        </p>
+
+    </div>
+
+    <div class="ornament">
+        <span></span><span></span><span></span>
+    </div>
+
+    <p class="whisper">
+        Your body is not wrong. You are not too much or too little.<br>
+        You came here with a question — and that alone is brave.<br>
+        You are exactly where you need to be. <span class="accent-dot"></span>
+    </p>
+
+</div>
+
+</body>
+</html>

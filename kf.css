@@ -1,0 +1,143 @@
+body {
+    background: linear-gradient(#0f0f0f, #1a1a1a);
+    color: #f5f5f5;
+    font-family: Georgia, serif;
+    margin: 40px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* Main article container */
+main {
+    max-width: 850px;
+    margin: auto;
+    background: #1c1c1c;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+/* Title */
+h1 {
+    font-size: 48px;
+    color: white;
+}
+
+h1::after {
+    content: " ☯";
+    font-size: 40px;
+}
+
+/* Yin Yang symbol */
+.yinyang {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 20px auto;
+    background:
+        radial-gradient(circle at 50% 25%, white 12px, black 13px, black 30px, transparent 31px),
+        radial-gradient(circle at 50% 75%, black 12px, white 13px, white 30px, transparent 31px),
+        linear-gradient(black 50%, white 50%);
+    animation: spin 6s linear infinite;
+}
+
+/* Rotation animation */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Section titles */
+h2 {
+    margin-top: 30px;
+    border-bottom: 2px solid #444;
+    padding-bottom: 5px;
+}
+
+/* Paragraphs */
+p {
+    max-width: 750px;
+    margin: 15px auto;
+}
+
+/* List styling */
+ul {
+    background: #222;
+    padding: 15px 25px;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: left;
+}
+
+li {
+    margin: 8px 0;
+    transition: 0.2s;
+}
+
+li:hover {
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+li:nth-child(odd) {
+    color: #ffffff;
+}
+
+li:nth-child(even) {
+    color: #bbbbbb;
+}
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+
+    body {
+        margin: 15px;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .yinyang {
+        width: 90px;
+        height: 90px;
+    }
+
+    main::before {
+        font-size: 100px;
+    }
+
+    ul {
+        width: 100%;
+    }
+}
+/* Yang (light) mode */
+.yang-mode {
+    background: #f5f5f5;
+    color: #111;
+}
+
+.yang-mode main {
+    background: #ffffff;
+    color: #111;
+}
+
+.yang-mode h2 {
+    border-bottom: 2px solid #bbb;
+}
+
+.yang-mode ul {
+    background: #eeeeee;
+}
+
